@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="@dimen/_8mdp"
+    android:layout_marginTop="@dimen/_8mdp">
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5mdp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/limedSpruce"
+        android:textSize="@dimen/_16font_mdp"
+        app:fontPath="fonts/fira_sans_bold"
+        app:layout_constraintEnd_toStartOf="@+id/imgPlan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="pasta and rice" />
+
+    <ImageView
+        android:id="@+id/imgPlan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_8mdp"
+        android:background="@drawable/bg_action_detail"
+        android:padding="5dp"
+        android:src="@drawable/plan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/txtTitle"
+        app:tint="@color/black" />
+
+    <TextView
+        android:id="@+id/txtPriceTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/price"
+        android:textColor="@color/limedSpruce"
+        android:textSize="@dimen/_14font_mdp"
+        app:fontPath="fira_sans_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/txtHealthScoreTitle"
+        app:layout_constraintTop_toTopOf="@+id/txtHealthScoreTitle" />
+
+    <TextView
+        android:id="@+id/txtLikeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_40mdp"
+        android:text="@string/likes"
+        android:textColor="@color/limedSpruce"
+        android:textSize="@dimen/_14font_mdp"
+        app:layout_constraintEnd_toStartOf="@+id/txtHealthScoreTitle"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtTitle" />
+
+    <TextView
+        android:id="@+id/txtHealthScoreTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/heathScore"
+        android:textColor="@color/limedSpruce"
+        android:textSize="@dimen/_14font_mdp"
+        app:layout_constraintEnd_toStartOf="@+id/txtPriceTitle"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/txtLikeTitle"
+        app:layout_constraintTop_toTopOf="@+id/txtLikeTitle" />
+
+    <TextView
+        android:id="@+id/txtLikes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10mdp"
+        android:drawablePadding="@dimen/_5mdp"
+        android:textColor="@color/pastelRed"
+        android:textSize="@dimen/_11font_mdp"
+        app:drawableEndCompat="@drawable/likes"
+        app:fontPath="fonts/fira_sans_light"
+        app:layout_constraintEnd_toEndOf="@+id/txtLikeTitle"
+        app:layout_constraintStart_toStartOf="@+id/txtLikeTitle"
+        app:layout_constraintTop_toBottomOf="@+id/txtLikeTitle"
+        tools:text="130" />
+
+    <TextView
+        android:id="@+id/txtHealthScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_14mdp"
+        android:layout_marginTop="@dimen/_10mdp"
+        android:drawablePadding="@dimen/_5mdp"
+        android:textColor="@color/royalOrange"
+        android:textSize="@dimen/_11font_mdp"
+        app:drawableEndCompat="@drawable/baseline_arrow_upward_24"
+        app:drawableTint="@color/royalOrange"
+        app:fontPath="fonts/fira_sans_light"
+        app:layout_constraintEnd_toEndOf="@+id/txtHealthScoreTitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txtHealthScoreTitle"
+        app:layout_constraintTop_toBottomOf="@+id/txtHealthScoreTitle"
+        tools:text="130" />
+
+    <TextView
+        android:id="@+id/txtPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="@dimen/_10mdp"
+        android:textColor="@color/violetsAreBlue"
+        android:textSize="@dimen/_11font_mdp"
+        app:drawableEndCompat="@drawable/dollor"
+        app:drawableTint="@color/violetsAreBlue"
+        app:fontPath="fonts/fira_sans_light"
+        app:layout_constraintEnd_toEndOf="@+id/txtPriceTitle"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/txtPriceTitle"
+        app:layout_constraintTop_toBottomOf="@+id/txtPriceTitle"
+        tools:text="130" />
+
+    <com.skydoves.expandablelayout.ExpandableLayout
+        android:id="@+id/expandableNutrition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_8mdp"
+        android:layout_marginTop="32dp"
+        app:expandable_duration="200"
+        app:expandable_isExpanded="false"
+        app:expandable_parentLayout="@layout/expandable_parent_detail"
+        app:expandable_secondLayout="@layout/expandable_child_detail"
+        app:expandable_showSpinner="true"
+        app:expandable_spinner="@drawable/ic_arrow_down"
+        app:expandable_spinner_animate="true"
+        app:expandable_spinner_color="@color/cultured"
+        app:expandable_spinner_gravity="start"
+        app:expandable_spinner_margin="14dp"
+        app:expandable_spinner_size="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtHealthScore" />
+
+    <TextView
+        android:id="@+id/descTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_8mdp"
+        android:text="@string/description"
+        android:textColor="@color/limedSpruce"
+        android:textSize="@dimen/_14font_mdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/expandableNutrition" />
+
+    <kr.co.prnd.readmore.ReadMoreTextView
+        android:id="@+id/txtReadMoreDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10mdp"
+        android:autoLink="none"
+        android:lineSpacingExtra="@dimen/_5mdp"
+        android:linksClickable="false"
+        android:paddingEnd="@dimen/_8mdp"
+        android:textColor="@color/rebeccaPurple"
+        android:textSize="@dimen/_10font_mdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/descTitle"
+        app:layout_constraintTop_toBottomOf="@id/descTitle"
+        app:readMoreColor="@color/pastelRed"
+        app:readMoreMaxLine="4"
+        app:readMoreText="@string/showMore"
+        tools:text="This is description text" />
+
+    <TextView
+        android:id="@+id/stepTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_8mdp"
+        android:text="@string/steps"
+        android:textColor="@color/limedSpruce"
+        android:textSize="@dimen/_14font_mdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtReadMoreDesc" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/stepsList"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8mdp"
+        android:layout_marginEnd="@dimen/_10mdp"
+        android:layout_marginHorizontal="@dimen/_8mdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@id/txtReadMoreDesc"
+        app:layout_constraintTop_toBottomOf="@+id/stepTitle"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/stepsShowMore"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_100mdp"
+        android:layout_marginHorizontal="@dimen/_5mdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/bg_shadow_white"
+        android:gravity="bottom|center_horizontal"
+        android:paddingBottom="@dimen/_5mdp"
+        android:text="@string/showMore"
+        android:textColor="@color/royalOrange"
+        android:textSize="@dimen/_10font_mdp"
+        android:visibility="gone"
+        app:fontPath="fonts/atlas_bold.ttf"
+        app:layout_constraintBottom_toBottomOf="@id/stepsList" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:constraint_referenced_ids="txtLikes,txtHealthScore,txtLikeTitle,txtHealthScoreTitle,txtPrice,txtPriceTitle,imgPlan,txtTitle,descTitle,txtReadMoreDesc,stepTitle,stepsList" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

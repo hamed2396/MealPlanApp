@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/_5mdp"
+    android:layout_marginStart="@dimen/_4mdp"
+    android:layout_marginEnd="@dimen/_6mdp"
+    android:background="@drawable/bg_rounded_white"
+    android:elevation="@dimen/_2mdp">
+    <!--Card-->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/RestaurantImageCard"
+        android:layout_width="@dimen/_100mdp"
+        android:layout_height="@dimen/_100mdp"
+        android:layout_margin="@dimen/_8mdp"
+        app:cardCornerRadius="@dimen/_8mdp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <!--Image-->
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@tools:sample/avatars" />
+        <!--Shadow-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.6"
+            android:background="@drawable/bg_shadow_dark" />
+
+    </com.google.android.material.card.MaterialCardView>
+    <!--Name-->
+    <TextView
+        android:id="@+id/txtRestaurantName"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_30mdp"
+        android:layout_marginHorizontal="@dimen/_8mdp"
+        android:ellipsize="end"
+        android:lineSpacingExtra="@dimen/_2mdp"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15font_mdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/RestaurantImageCard"
+        app:layout_constraintTop_toTopOf="@id/RestaurantImageCard" />
+    <!--Desc-->
+
+    <!--Info-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/recipeInfoLay"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_35mdp"
+        app:layout_constraintBottom_toBottomOf="@id/RestaurantImageCard"
+        app:layout_constraintEnd_toStartOf="@id/txtRating"
+        app:layout_constraintStart_toStartOf="@+id/txtRestaurantName">
+
+
+        <TextView
+            android:id="@+id/txtOpenHour"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_30mdp"
+            android:layout_marginEnd="@dimen/_5mdp"
+            android:background="@drawable/bg_opening_hour"
+            android:drawablePadding="@dimen/_3mdp"
+            android:ellipsize="end"
+            android:gravity="start|center"
+            android:lineSpacingExtra="@dimen/_2mdp"
+            android:maxLines="2"
+            android:textColor="@color/limedSpruce"
+            android:textSize="@dimen/_10font_mdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="11pm -12am" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/txtRating"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_30mdp"
+
+        android:drawablePadding="@dimen/_3mdp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:padding="@dimen/_3mdp"
+        android:lineSpacingExtra="@dimen/_2mdp"
+        android:maxLines="2"
+        android:layout_marginEnd="@dimen/_8mdp"
+        android:textColor="@color/goldenPoppy"
+        android:textSize="@dimen/_10font_mdp"
+        app:drawableEndCompat="@drawable/rating"
+        app:drawableTint="@color/goldenPoppy"
+        app:layout_constraintBottom_toBottomOf="@+id/RestaurantImageCard"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        tools:text="541" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

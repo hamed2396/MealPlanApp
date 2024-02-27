@@ -1,0 +1,36 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+    <path
+        android:fillColor="@color/rebeccaPurple"
+        android:pathData="M406.89,78.9L292.58,78.9L292.58,66.44a36.31,36.31 0,0 0,-36.26 -36.26h-0.64a36.31,36.31 0,0 0,-36.26 36.26L219.42,78.9L105.11,78.9a24.68,24.68 0,0 0,-24.65 24.65L80.46,457.18a24.67,24.67 0,0 0,24.65 24.64L406.89,481.82a24.67,24.67 0,0 0,24.65 -24.64L431.54,103.55A24.68,24.68 0,0 0,406.89 78.9ZM224.42,88.9a5,5 0,0 0,5 -5L229.42,66.44a26.29,26.29 0,0 1,26.26 -26.26h0.64a26.29,26.29 0,0 1,26.26 26.26L282.58,83.9a5,5 0,0 0,5 5h27v42.34L197.39,131.24L197.39,88.9ZM421.54,457.18a14.66,14.66 0,0 1,-14.65 14.64L105.11,471.82a14.66,14.66 0,0 1,-14.65 -14.64L90.46,103.55A14.66,14.66 0,0 1,105.11 88.9h82.28v47.34a5,5 0,0 0,5 5L319.61,141.24a5,5 0,0 0,5 -5L324.61,88.9h82.28a14.66,14.66 0,0 1,14.65 14.65Z" />
+    <path
+        android:fillColor="@color/rebeccaPurple"
+        android:pathData="M256,66.98m-3.71,8.96a9.7,9.7 67.5,1 1,7.42 -17.92a9.7,9.7 67.5,1 1,-7.42 17.92" />
+    <path
+        android:fillColor="@color/rebeccaPurple"
+        android:pathData="M302,196.2H145a5,5 0,0 0,0 10H302a5,5 0,0 0,0 -10Z" />
+    <path
+        android:fillColor="@color/rebeccaPurple"
+        android:pathData="M386.66,171.65a5,5 0,0 0,-6.86 1.72L353,218.2l-8.1,-8.68a5,5 0,0 0,-7.31 6.82l12.64,13.54a5,5 0,0 0,3.65 1.59,4.71 4.71,0 0,0 0.53,0 5,5 0,0 0,3.76 -2.41l30.23,-50.53A5,5 0,0 0,386.66 171.65Z" />
+    <path
+        android:fillColor="@color/rebeccaPurple"
+        android:pathData="M302,262.52H145a5,5 0,0 0,0 10H302a5,5 0,0 0,0 -10Z" />
+    <path
+        android:fillColor="@color/rebeccaPurple"
+        android:pathData="M386.66,238a5,5 0,0 0,-6.86 1.72L353,284.52l-8.1,-8.68a5,5 0,0 0,-7.31 6.82l12.64,13.54a5,5 0,0 0,3.65 1.59,4.71 4.71,0 0,0 0.53,0 5,5 0,0 0,3.76 -2.41l30.23,-50.53A5,5 0,0 0,386.66 238Z" />
+    <path
+        android:fillColor="@color/rebeccaPurple"
+        android:pathData="M302,328.84H145a5,5 0,0 0,0 10H302a5,5 0,0 0,0 -10Z" />
+    <path
+        android:fillColor="@color/rebeccaPurple"
+        android:pathData="M386.66,304.29A5,5 0,0 0,379.8 306L353,350.84l-8.1,-8.68a5,5 0,0 0,-7.31 6.82l12.64,13.54a5,5 0,0 0,3.65 1.59,4.71 4.71,0 0,0 0.53,0 5,5 0,0 0,3.76 -2.41l30.23,-50.52A5,5 0,0 0,386.66 304.29Z" />
+    <path
+        android:fillColor="@color/rebeccaPurple"
+        android:pathData="M302,395.16H145a5,5 0,0 0,0 10H302a5,5 0,0 0,0 -10Z" />
+    <path
+        android:fillColor="@color/rebeccaPurple"
+        android:pathData="M386.66,370.61a5,5 0,0 0,-6.86 1.72L353,417.16l-8.1,-8.68a5,5 0,0 0,-7.31 6.83l12.64,13.53a5,5 0,0 0,3.65 1.59,4.71 4.71,0 0,0 0.53,0 5,5 0,0 0,3.76 -2.4l30.23,-50.53A5,5 0,0 0,386.66 370.61Z" />
+</vector>

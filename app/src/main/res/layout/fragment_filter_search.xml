@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_top_rounded"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/_15mdp"
+        android:weightSum="2.5">
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8mdp"
+            android:layout_marginTop="@dimen/_12mdp"
+            android:rotation="45"
+            android:src="@drawable/baseline_add_24"
+            app:tint="@color/limedSpruce" />
+
+        <View
+
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_12mdp"
+            android:padding="@dimen/_3mdp"
+            android:text="@string/filter_search"
+            android:textColor="@color/rebeccaPurple"
+            android:textSize="@dimen/_15font_mdp" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height=".6dp"
+        android:layout_marginTop="@dimen/_15mdp"
+        android:background="@color/rebeccaPurple" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:orientation="vertical"
+        android:weightSum="5"
+        app:layout_constraintVertical_bias="1.0">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/tabCard"
+            style="@style/ColoredShadowLight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_7mdp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="@dimen/_8mdp">
+
+
+            <!--Tab layout-->
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_10mdp"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="@color/greenLizard"
+                app:tabMode="fixed"
+                app:tabSelectedTextAppearance="@style/TabLayoutFontBold"
+                app:tabSelectedTextColor="@color/greenLizard"
+                app:tabTextAppearance="@style/TabNotSelectedTextAppearance"
+                app:tabTextColor="@color/gray" />
+            <!--View pager-->
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/detailViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".6">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/lightSilverAlpha"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".3" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnApply"
+                style="@style/AppButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_20mdp"
+                android:backgroundTint="@color/greenLizard"
+                android:text="@string/apply"
+                android:textAllCaps="false"
+                app:cornerRadius="@dimen/_10mdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline4"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtClearFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/clear_filters"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12font_mdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+</LinearLayout>

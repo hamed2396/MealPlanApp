@@ -1,0 +1,90 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MealPlan" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:windowBackground">@drawable/fragment_gradient</item>
+    </style>
+
+    <!-- styles.xml -->
+    <style name="RoundedImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10dp</item>
+    </style>
+
+    <style name="EllipsizedTextViewStyle">
+        <item name="android:ellipsize">end</item>
+        <item name="android:textSize">@dimen/_11font_mdp</item>
+        <item name="android:textColor">@color/limedSpruce</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="ColoredShadowLight">
+        <item name="android:outlineSpotShadowColor" tools:targetApi="p">@color/greenLizard</item>
+        <item name="android:outlineAmbientShadowColor" tools:targetApi="p">@color/greenLizard</item>
+    </style>
+
+    <style name="OutlinedTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/txt_input_lay</item> <!-- Border color -->
+        <item name="hintTextColor">@color/BleuDeFrance</item> <!-- Hint text color -->
+        <item name="boxCornerRadiusTopEnd">8dp</item> <!-- Rounded corners -->
+        <item name="boxCornerRadiusTopStart">8dp</item>
+        <item name="boxCornerRadiusBottomEnd">8dp</item>
+        <item name="boxCornerRadiusBottomStart">8dp</item>
+        <item name="boxStrokeWidth">2dp</item>
+
+    </style>
+
+    <style name="AppButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:textSize">16sp</item>
+        <item name="android:insetLeft">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetRight">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <!-- Add more attributes as needed -->
+    </style>
+
+    <style name="RemoveDialogBackground" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowSoftInputMode">adjustResize|stateVisible</item>
+    </style>
+
+    <style name="restaurantTextView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/_20mdp</item>
+        <item name="android:layout_marginEnd">@dimen/_5mdp</item>
+        <item name="android:paddingStart">@dimen/_8mdp</item>
+        <item name="android:textColor">@color/limedSpruce</item>
+        <!-- Add any other attributes you want to customize -->
+    </style>
+
+    <style name="CustomCardViewStyle" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay_card_custom_corners</item>
+        <item name="android:outlineSpotShadowColor" tools:targetApi="p">@color/apple</item>
+        <item name="android:outlineAmbientShadowColor" tools:targetApi="p">@color/apple</item>
+    </style>
+
+
+    <style name="ShapeAppearanceOverlay_card_custom_corners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeBottomRight">@dimen/_15mdp</item>
+        <item name="cornerSizeBottomLeft">@dimen/_15mdp</item>
+    </style>
+
+    <style name="greenChip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/item_chip_background</item>
+    </style>
+    <style name="TabNotSelectedTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+    </style>
+    <style name="TabLayoutFontBold" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="fontFamily">@font/fira_sans_bold</item>
+        <item name="android:fontFamily">@font/fira_sans_bold</item>
+        <item name="android:textSize">@dimen/_10font_mdp</item>
+    </style>
+
+
+    <style name="Theme.MealPlan" parent="Base.Theme.MealPlan" />
+</resources>

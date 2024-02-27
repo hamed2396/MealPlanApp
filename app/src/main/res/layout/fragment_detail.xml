@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.unboadring.SignUpFragment">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/greenLizard"
+        app:tabMode="fixed"
+        app:tabSelectedTextAppearance="@style/TabLayoutFontBold"
+        app:tabSelectedTextColor="@color/greenLizard"
+        app:tabTextAppearance="@style/TabNotSelectedTextAppearance"
+        app:tabTextColor="@color/gray" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/youtubeContainer"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_250mdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.skydoves.androidveil.VeilLayout
+                android:id="@+id/youtubeLoader"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:veilLayout_baseAlpha="0.6"
+                app:veilLayout_baseColor="@color/limedSpruce"
+                app:veilLayout_dropOff="0.5"
+                app:veilLayout_highlightAlpha="1.0"
+                app:veilLayout_highlightColor="@color/gray"
+                app:veilLayout_layout="@layout/item_shimmer_youtube"
+                app:veilLayout_radius="6dp"
+                app:veilLayout_shimmerEnable="true"
+                app:veilLayout_veiled="true" />
+
+            <ImageView
+                android:id="@+id/imgPoster"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:id="@+id/youtubePlayer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/soup"
+                android:visibility="gone"
+                app:autoPlay="false" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mealInformationContainer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/mines30mdp"
+            android:background="@drawable/bg_top_rounded"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/youtubeContainer">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:fillViewport="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_80mdp"
+                        android:id="@+id/loading"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/nutritionContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <include
+                            android:id="@+id/layoutExpandable_nutrition_"
+                            layout="@layout/recipe_log" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_marginTop="@dimen/_8mdp"
+                        android:id="@+id/ingredientContainer"
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/nutritionContainer"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <include
+                            android:id="@+id/layoutIngredient"
+                            layout="@layout/layout_ingredient_detail" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_marginTop="@dimen/_8mdp"
+                        android:id="@+id/chartContainer"
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/ingredientContainer"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <include
+                            android:id="@+id/layoutChartNutrition"
+                            layout="@layout/layout_nutrition_chart" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

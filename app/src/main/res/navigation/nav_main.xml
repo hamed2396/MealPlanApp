@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.mealplan.ui.splash.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash">
+
+    </fragment>
+    <navigation
+        android:id="@+id/navOnboard"
+        app:startDestination="@id/viewPagerFragment">
+
+        <fragment
+            android:id="@+id/viewPagerFragment"
+            android:name="com.example.mealplan.ui.unboadring.ViewPagerFragment"
+            android:label="fragment_view_pager"
+            tools:layout="@layout/fragment_view_pager" />
+
+        <fragment
+            android:id="@+id/planFoodFragment"
+            android:name="com.example.mealplan.ui.unboadring.PlanFoodFragment"
+            android:label="fragment_plan_food"
+            tools:layout="@layout/fragment_plan_food">
+            <action
+                android:id="@+id/action_planFoodFragment_to_makeFoodFragment"
+                app:destination="@id/makeFoodFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/makeFoodFragment"
+            android:name="com.example.mealplan.ui.unboadring.MakeFoodFragment"
+            android:label="fragment_make_food"
+            tools:layout="@layout/fragment_make_food">
+            <action
+                android:id="@+id/action_makeFoodFragment_to_loginFragment"
+                app:destination="@id/loginFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/loginFragment"
+            android:name="com.example.mealplan.ui.unboadring.SignUpFragment"
+            android:label="fragment_login"
+            tools:layout="@layout/fragment_login" />
+    </navigation>
+    <navigation
+        android:id="@+id/navMain"
+        app:startDestination="@id/mealFragment">
+        <fragment
+            android:id="@+id/mealFragment"
+            android:name="com.example.mealplan.ui.home.MealFragment"
+            android:label="MealFragment"
+            tools:layout="@layout/fragment_meal">
+            <action
+                android:id="@+id/actionMealToSearch"
+                app:destination="@id/searchFragment" />
+            <action
+                android:id="@+id/actionDetail"
+                app:destination="@id/navigationDetail">
+                <argument
+                    android:name="detailId"
+                    app:argType="integer" />
+                <argument
+                    android:name="steps"
+                    app:argType="com.example.mealplan.data.models.meal.ResponseRandomMeal$Result$AnalyzedInstruction" />
+
+            </action>
+        </fragment>
+        <fragment
+            android:id="@+id/logFragment"
+            android:name="com.example.mealplan.ui.home.LogFragment"
+            android:label="LogFragment"
+            tools:layout="@layout/fragment_log" />
+        <fragment
+            android:id="@+id/planFragment"
+            android:name="com.example.mealplan.ui.home.PlanFragment"
+            android:label="@string/planFragment"
+            tools:layout="@layout/fragment_plan" />
+        <fragment
+            android:id="@+id/searchFragment"
+            android:name="com.example.mealplan.ui.home.SearchFragment"
+            android:label="SearchFragment"
+            tools:layout="@layout/fragment_search">
+            <argument
+                android:name="type"
+                android:defaultValue=""
+                app:argType="string" />
+            <action
+                android:id="@+id/actionDetail"
+                app:destination="@id/navigationDetail">
+                <argument
+                    android:name="detailId"
+                    app:argType="integer" />
+                <argument
+                    android:name="steps"
+                    app:argType="com.example.mealplan.data.models.meal.ResponseRandomMeal$Result$AnalyzedInstruction" />
+
+            </action>
+        </fragment>
+    </navigation>
+    <!--General actions-->
+    <action
+        android:id="@+id/actionToNavMain"
+        app:destination="@id/navMain" />
+    <action
+        android:id="@+id/actionSplashToViewPager"
+        app:destination="@id/navOnboard" />
+    <action
+        android:id="@+id/actionNavMainToNavRestaurant"
+        app:destination="@id/nav_restaurant" />
+    <action
+        android:id="@+id/actionNavMainToNavFilter"
+        app:destination="@id/navFilterSearch" />
+
+
+    <navigation
+        android:id="@+id/nav_restaurant"
+        app:startDestination="@id/restaurantFragment">
+        <fragment
+            android:id="@+id/restaurantFragment"
+            android:name="com.example.mealplan.ui.restaurant.RestaurantFragment"
+            android:label="RestaurantFragment"
+            tools:layout="@layout/restauran_fragment">
+            <action
+                android:id="@+id/actionRestaurantToResInfo"
+                app:destination="@id/restaurantInfoFragment" />
+        </fragment>
+        <dialog
+            android:id="@+id/restaurantInfoFragment"
+            android:name="com.example.mealplan.ui.restaurant.RestaurantInfoFragment"
+            android:label="RestaurantInfoFragment"
+            tools:layout="@layout/fragment_restaurant_info">
+
+            <argument
+                android:name="info"
+                app:argType="Restaurant" />
+        </dialog>
+    </navigation>
+    <navigation
+        android:id="@+id/navFilterSearch"
+        app:startDestination="@id/filterSearchFragment">
+        <dialog
+            android:id="@+id/filterSearchFragment"
+            android:name="com.example.mealplan.ui.filterSearch.FilterSearchFragment"
+            android:label="FilterSearchFragment"
+            tools:layout="@layout/fragment_filter_search" />
+        <fragment
+            android:id="@+id/dietFilterFragment"
+            android:name="com.example.mealplan.ui.filterSearch.filterViewPager.RecipeFilterFragment"
+            android:label="DietFilterFragment"
+            tools:layout="@layout/fragment_login" />
+        <fragment
+            android:id="@+id/macroFilterFragment"
+            android:name="com.example.mealplan.ui.filterSearch.filterViewPager.MacroFilterFragment"
+            android:label="MacroFilterFragment"
+            tools:layout="@layout/fragment_login" />
+    </navigation>
+    <navigation android:id="@+id/navigationDetail"
+        app:startDestination="@id/detailFragment">
+        <fragment
+            android:id="@+id/detailFragment"
+            android:name="com.example.mealplan.ui.detail.DetailFragment"
+            android:label="DetailFragment"
+            tools:layout="@layout/fragment_detail">
+            <argument
+                android:name="detailId"
+                app:argType="integer" />
+            <argument
+                android:name="steps"
+                app:argType="com.example.mealplan.data.models.meal.ResponseRandomMeal$Result$AnalyzedInstruction" />
+            <action
+                android:id="@+id/actionToStep"
+                app:destination="@id/stepFragment2" />
+        </fragment>
+        <dialog
+            android:id="@+id/stepFragment2"
+            android:name="com.example.mealplan.ui.detail.StepFragment"
+            android:label="StepFragment" >
+            <argument
+                android:name="stepList"
+                app:argType="com.example.mealplan.data.models.meal.ResponseRandomMeal$Result$AnalyzedInstruction" />
+        </dialog>
+    </navigation>
+
+</navigation>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?><!-- res/drawable/ripple_effect.xml -->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape android:shape="rectangle">
+            <padding
+                android:bottom="@dimen/_5mdp"
+                android:left="@dimen/_5mdp"
+                android:right="@dimen/_5mdp"
+                android:top="@dimen/_5mdp" />
+            <corners android:radius="@dimen/_5mdp" />
+            <solid android:color="@color/darkOrange" /> <!-- Your background color -->
+        </shape>
+    </item>
+    <item android:drawable="?android:attr/selectableItemBackground">
+        <shape android:shape="rectangle">
+
+        </shape>
+    </item>
+</layer-list>
+
+

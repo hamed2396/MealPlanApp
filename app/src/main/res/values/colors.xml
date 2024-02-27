@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="cultured">#F6F2F2</color>
+    <color name="lightSilver">#D6D6D6</color>
+    <color name="lightSilverAlpha">#80D6D6D6</color>
+    <color name="apple">#76C33A</color>
+    <color name="pastelGreen">#74D680</color>
+    <color name="pastelGreenAlpha">#8074D680</color>
+    <color name="BleuDeFrance">#1E88E5</color>
+    <color name="intenseWhite">#F8F9FA</color>
+    <color name="goldenPoppy">#FFC300</color>
+    <color name="pastelRed">#FF6060</color>
+    <color name="pastelRedAlpha">#B3FF6060</color>
+    <color name="pastelRedAlpha50">#80FF6060</color>
+    <color name="mayaBlue">#68BEFF</color>
+    <color name="violetsAreBlue">#8E6AEC</color>
+    <color name="violetsAreBlueAlpha">#B38E6AEC</color>
+    <color name="violetsAreBlueAlpha50">#808E6AEC</color>
+    <color name="royalOrange">#FF9A46</color>
+    <color name="turquoiseSurf">#05B8D9</color>
+    <color name="lavender">#E3DCF1</color>
+    <color name="darkOrange">#FFC300</color>
+    <color name="darkOrangeAlpha">#B3FFC300</color>
+    <color name="darkOrangeAlpha50">#80FFC300</color>
+    <color name="splashStartColor">#4CAF50</color> <!-- Dark Green -->
+    <color name="splashEndColor">#8BC34A</color>
+    <color name="rebeccaPurple">#5C615D</color>
+    <color name="greenLizard">#46FFA5</color>
+    <color name="limedSpruce">#404852</color>
+    <color name="darkSeaGreen">#F0E6E6</color>
+    <color name="mediumGray">#D1D1D1</color>
+    <color name="gray">#737980</color>
+    <color name="grayAlpha">#B3737980</color>
+    <color name="ming">#40737980</color>
+    <color name="whiteAlpha">#4DE8EAF6</color>
+</resources>

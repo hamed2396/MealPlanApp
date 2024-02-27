@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/constraint"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:layout_margin="@dimen/_5mdp"
+            android:id="@+id/title"
+            android:layout_width="@dimen/_200mdp"
+            android:layout_height="@dimen/_30mdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_marginEnd="@dimen/_8mdp"
+            android:layout_width="@dimen/_40mdp"
+            android:background="@drawable/bg_action_detail"
+            android:layout_height="@dimen/_40mdp"
+            android:backgroundTint="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:id="@+id/linear2"
+            android:layout_marginTop="@dimen/_40mdp"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            android:layout_width="match_parent"
+            android:weightSum="3"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <View
+                android:layout_marginStart="@dimen/_40mdp"
+                android:layout_width="@dimen/_60mdp"
+                android:layout_height="@dimen/_20mdp"
+                 />
+            <View
+                android:layout_marginStart="@dimen/_40mdp"
+                android:layout_width="@dimen/_60mdp"
+                android:layout_height="@dimen/_20mdp"
+                />
+            <View
+                android:layout_marginStart="@dimen/_40mdp"
+                android:layout_width="@dimen/_60mdp"
+                android:layout_height="@dimen/_20mdp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linear3"
+            android:layout_marginTop="@dimen/_10mdp"
+            android:weightSum="3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/linear2">
+            <View
+                android:layout_marginStart="@dimen/_40mdp"
+                android:layout_width="@dimen/_60mdp"
+                android:layout_height="@dimen/_20mdp"
+                />
+            <View
+                android:layout_marginStart="@dimen/_40mdp"
+                android:layout_width="@dimen/_60mdp"
+                android:layout_height="@dimen/_20mdp"
+                />
+            <View
+                android:layout_marginStart="@dimen/_40mdp"
+                android:layout_width="@dimen/_60mdp"
+                android:layout_height="@dimen/_20mdp"
+                />
+        </LinearLayout>
+        <View
+            android:layout_marginTop="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_70mdp"
+            android:layout_marginHorizontal="@dimen/_20mdp"
+            app:layout_constraintTop_toBottomOf="@id/linear3"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+   app:layout_constraintTop_toBottomOf="@id/constraint"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/constraintSecond">
+    <View
+        android:id="@+id/descTitle"
+        android:layout_width="@dimen/_80mdp"
+        android:layout_height="@dimen/_15mdp"
+        android:layout_margin="@dimen/_8mdp"
+        android:text="@string/description"
+        android:textColor="@color/limedSpruce"
+        android:textSize="@dimen/_14font_mdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_marginEnd="@dimen/_10mdp"
+        android:layout_marginStart="@dimen/_5mdp"
+        android:layout_marginTop="@dimen/_10mdp"
+        android:id="@+id/linear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/descTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_15mdp"
+            android:layout_marginEnd="@dimen/_50mdp"/>
+        <View
+            android:layout_marginTop="@dimen/_10mdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_15mdp"
+            android:layout_marginEnd="@dimen/_50mdp"/>
+        <View
+            android:layout_marginTop="@dimen/_10mdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_15mdp"
+            android:layout_marginEnd="@dimen/_50mdp"/>
+        <View
+            android:layout_marginTop="@dimen/_10mdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_15mdp"
+            android:layout_marginEnd="@dimen/_50mdp"/>
+        <View
+            android:layout_marginTop="@dimen/_10mdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_15mdp"
+            android:layout_marginEnd="@dimen/_50mdp"/>
+    </LinearLayout>
+
+
+    <View
+        android:id="@+id/stepTitle"
+        android:layout_width="@dimen/_100mdp"
+        android:layout_height="@dimen/_15mdp"
+        android:layout_margin="@dimen/_8mdp"
+        android:text="@string/steps"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linear" />
+
+    <View
+        android:id="@+id/stepsList"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_200mdp"
+        android:layout_marginTop="@dimen/_8mdp"
+        android:layout_marginEnd="@dimen/_10mdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@id/stepTitle"
+        app:layout_constraintTop_toBottomOf="@+id/stepTitle"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/stepsShowMore"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100mdp"
+        android:background="@drawable/bg_shadow_white"
+        android:gravity="bottom|center_horizontal"
+        android:paddingBottom="@dimen/_5mdp"
+        android:text="@string/showMore"
+        android:textColor="@color/royalOrange"
+        android:textSize="@dimen/_10font_mdp"
+        android:visibility="gone"
+        app:fontPath="fonts/atlas_bold.ttf"
+        app:layout_constraintBottom_toBottomOf="@id/stepsList" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

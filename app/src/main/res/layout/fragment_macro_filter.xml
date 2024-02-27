@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/_25mdp">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10mdp">
+
+                <TextView
+
+                    android:id="@+id/titleCalTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8mdp"
+                    android:text="@string/calories_range"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13font_mdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtCalRange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_8mdp"
+                    android:background="@drawable/bg_amount_slider"
+                    android:backgroundTint="@color/grayAlpha"
+                    android:textColor="@color/limedSpruce"
+                    app:layout_constraintBottom_toBottomOf="@+id/titleCalTxt"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/titleCalTxt"
+                    tools:text="1 - 303 Calories" />
+
+                <com.google.android.material.slider.RangeSlider
+                    android:id="@+id/calRange"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10mdp"
+                    android:layout_marginTop="@dimen/_15mdp"
+                    android:valueFrom="0"
+                    android:valueTo="1000"
+                    app:haloColor="@color/grayAlpha"
+                    app:labelBehavior="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/titleCalTxt"
+                    app:thumbColor="@color/grayAlpha"
+                    app:trackColorActive="@color/grayAlpha"
+                    app:trackColorInactive="@color/ming" />
+                <!--Sort-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_30mdp">
+
+                <TextView
+
+                    android:id="@+id/titleCarbTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8mdp"
+                    android:text="@string/carbs_range"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13font_mdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtCarbRange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_8mdp"
+                    android:background="@drawable/bg_amount_slider"
+                    android:backgroundTint="@color/pastelRedAlpha"
+                    android:textColor="@color/pastelRed"
+                    app:layout_constraintBottom_toBottomOf="@+id/titleCarbTxt"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/titleCarbTxt"
+                    tools:text="1 - 50 carbs" />
+
+                <com.google.android.material.slider.RangeSlider
+                    android:id="@+id/carbRange"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10mdp"
+                    android:layout_marginTop="@dimen/_15mdp"
+                    android:valueFrom="0"
+                    android:valueTo="50"
+                    app:haloColor="@color/pastelRedAlpha"
+                    app:labelBehavior="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/titleCarbTxt"
+                    app:thumbColor="@color/pastelRedAlpha"
+                    app:trackColorActive="@color/pastelRed"
+                    app:trackColorInactive="@color/ming" />
+                <!--Sort-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_30mdp">
+
+                <TextView
+
+                    android:id="@+id/titleProteinTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8mdp"
+                    android:text="@string/protein_range"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13font_mdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtProteinRange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_8mdp"
+                    android:background="@drawable/bg_amount_slider"
+                    android:backgroundTint="@color/violetsAreBlueAlpha"
+                    android:textColor="@color/violetsAreBlue"
+                    app:layout_constraintBottom_toBottomOf="@+id/titleProteinTxt"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/titleProteinTxt"
+                    tools:text="1 - 50 protein" />
+
+                <com.google.android.material.slider.RangeSlider
+                    android:id="@+id/proteinRange"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10mdp"
+
+                    android:layout_marginTop="@dimen/_15mdp"
+                    android:valueFrom="0"
+                    android:valueTo="50"
+                    app:haloColor="@color/violetsAreBlueAlpha"
+                    app:labelBehavior="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/titleProteinTxt"
+                    app:thumbColor="@color/violetsAreBlueAlpha"
+                    app:trackColorActive="@color/violetsAreBlueAlpha"
+                    app:trackColorInactive="@color/ming" />
+                <!--Sort-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_30mdp">
+
+                <TextView
+
+                    android:id="@+id/titleFatTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8mdp"
+                    android:text="@string/fat_range"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13font_mdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtFatRange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_8mdp"
+                    android:background="@drawable/bg_amount_slider"
+                    android:backgroundTint="@color/darkOrangeAlpha"
+                    android:textColor="@color/darkOrange"
+                    app:layout_constraintBottom_toBottomOf="@+id/titleFatTxt"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/titleFatTxt"
+                    tools:text="1 - 50 Fat" />
+
+                <com.google.android.material.slider.RangeSlider
+                    android:id="@+id/fatRange"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10mdp"
+                    android:layout_marginTop="@dimen/_15mdp"
+                    android:valueFrom="0"
+                    android:valueTo="50"
+                    app:haloColor="@color/darkOrangeAlpha"
+                    app:labelBehavior="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/titleFatTxt"
+                    app:thumbColor="@color/darkOrangeAlpha"
+                    app:trackColorActive="@color/darkOrangeAlpha"
+                    app:trackColorInactive="@color/ming" />
+                <!--Sort-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/toggleAccess"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="@dimen/_5mdp"
+                android:layout_marginEnd="@dimen/_5mdp"
+                android:backgroundTint="@color/greenLizard" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="@dimen/_5mdp"
+                android:text="@string/enable_disable_sliders"
+                android:textColor="@color/limedSpruce" />
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

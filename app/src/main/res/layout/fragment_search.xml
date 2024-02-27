@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   android:paddingBottom="@dimen/_56mdp"
+    android:clipToPadding="false">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toolbarContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_main"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <EditText
+        android:id="@+id/edtSearch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10mdp"
+        android:layout_marginTop="@dimen/_8mdp"
+        android:background="@drawable/bg_search_edt"
+        android:drawableEnd="@drawable/filter"
+        android:hint="@string/search_meals"
+        android:padding="@dimen/_10mdp"
+        app:drawableTint="@color/limedSpruce"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarContainer"
+        tools:ignore="TextFields" />
+
+    <HorizontalScrollView
+        android:id="@+id/mealChipsScroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_3mdp"
+        android:clipToPadding="false"
+        android:fadingEdge="horizontal"
+        android:requiresFadingEdge="horizontal"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/edtSearch">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/mealChipGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingHorizontal="@dimen/_10mdp"
+            app:chipSpacing="0dp"
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            app:singleLine="true"
+
+             />
+    </HorizontalScrollView
+>
+
+    <com.todkars.shimmer.ShimmerRecyclerView
+        android:layout_marginTop="@dimen/_12mdp"
+        android:id="@+id/mealList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mealChipsScroll"
+        app:shimmer_recycler_auto_start="true"
+        app:shimmer_recycler_item_count="4"
+        app:shimmer_recycler_layout="@layout/item_random_meal_shimmer"
+        tools:listitem="@layout/item_random_meal"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

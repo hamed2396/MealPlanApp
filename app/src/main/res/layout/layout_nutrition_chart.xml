@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/_10mdp">
+
+    <TextView
+        android:id="@+id/chartTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10mdp"
+        android:text="@string/nutrition_chart"
+        android:textColor="@color/limedSpruce"
+        android:textSize="@dimen/_14font_mdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.skydoves.androidveil.VeilLayout
+        android:id="@+id/shimmerLayChart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chartTitle"
+        app:veilLayout_baseAlpha="0.6"
+        app:veilLayout_baseColor="@color/limedSpruce"
+        app:veilLayout_dropOff="0.5"
+        app:veilLayout_highlightAlpha="1.0"
+        app:veilLayout_highlightColor="@color/gray"
+        app:veilLayout_layout="@layout/item_shimmer_nutrition_chart"
+        app:veilLayout_radius="6dp"
+        app:veilLayout_shimmerEnable="true"
+        app:veilLayout_veiled="true" />
+
+    <ImageView
+        android:id="@+id/chart"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_450mdp"
+        android:layout_marginStart="@dimen/_5mdp"
+        android:layout_marginTop="@dimen/_8mdp"
+        android:scaleType="fitXY"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chartTitle"
+        tools:ignore="ContentDescription" />
+</androidx.constraintlayout.widget.ConstraintLayout>

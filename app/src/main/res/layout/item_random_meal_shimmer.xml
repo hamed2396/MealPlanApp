@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_8mdp"
+        android:layout_marginTop="@dimen/_5mdp"
+        android:backgroundTint="@color/cultured"
+        app:cardCornerRadius="@dimen/_10mdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginBottom="@dimen/_10mdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/imgPoster"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_160mdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:alpha="0.6"
+                android:background="@drawable/bg_shadow_dark"
+                tools:src="@tools:sample/avatars" />
+
+            <View
+                android:id="@+id/txtTitle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_10mdp"
+                android:layout_margin="@dimen/_8mdp"
+                android:layout_marginHorizontal="@dimen/_5mdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imgPoster"
+                android:alpha="0.6"
+                android:background="@drawable/bg_shadow_dark"
+            />
+
+            <View
+                android:id="@+id/txtTime"
+                android:layout_width="@dimen/_40mdp"
+                android:layout_height="@dimen/_30mdp"
+                android:layout_marginTop="@dimen/_12mdp"
+                app:layout_constraintStart_toStartOf="@+id/txtTitle"
+                app:layout_constraintTop_toBottomOf="@id/txtTitle"
+                android:alpha="0.6"
+                android:background="@drawable/bg_shadow_dark"
+               />
+
+            <View
+                android:id="@+id/txtCals"
+                android:layout_width="@dimen/_40mdp"
+                android:layout_height="@dimen/_30mdp"
+                android:layout_marginStart="@dimen/_5mdp"
+                app:layout_constraintStart_toEndOf="@id/txtTime"
+                app:layout_constraintTop_toTopOf="@id/txtTime"
+                android:alpha="0.6"
+                android:background="@drawable/bg_shadow_dark"
+                />
+
+            <View
+                android:id="@+id/txtCarbs"
+                android:layout_width="@dimen/_40mdp"
+                android:layout_height="@dimen/_30mdp"
+                android:layout_marginEnd="@dimen/_5mdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/txtCals"
+                android:alpha="0.6"
+                android:background="@drawable/bg_shadow_dark"
+                />
+
+            <View
+                android:id="@+id/txtProtein"
+                android:layout_width="@dimen/_40mdp"
+                android:layout_height="@dimen/_30mdp"
+                android:layout_marginEnd="@dimen/_5mdp"
+                app:layout_constraintEnd_toStartOf="@id/txtCarbs"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:alpha="0.6"
+                android:background="@drawable/bg_shadow_dark"
+                app:layout_constraintTop_toTopOf="@id/txtCarbs"
+
+                />
+            <View
+                android:id="@+id/txtFat"
+                android:alpha="0.6"
+                android:background="@drawable/bg_shadow_dark"
+                android:layout_width="@dimen/_40mdp"
+                android:layout_height="@dimen/_30mdp"
+                android:layout_marginEnd="@dimen/_5mdp"
+                app:layout_constraintEnd_toStartOf="@id/txtProtein"
+                app:layout_constraintTop_toTopOf="@id/txtProtein"
+               />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

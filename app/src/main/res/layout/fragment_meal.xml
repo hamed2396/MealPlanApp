@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".utils.base.BaseFragment"
+    tools:ignore="UseCompoundDrawables,ContentDescription">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txtTitleType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5mdp"
+            android:layout_marginTop="@dimen/_10mdp"
+            android:text="@string/mealTypes"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14font_mdp"
+            app:fontPath="fira_sans_bold.ttf"
+            app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+        <HorizontalScrollView
+            android:id="@+id/horScroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8mdp"
+            android:fillViewport="true"
+            android:paddingVertical="@dimen/_10mdp"
+            android:scrollbars="none"
+            app:layout_constraintTop_toBottomOf="@id/txtTitleType">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_10mdp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/_10mdp"
+                    android:orientation="vertical"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/bread"
+                        android:src="@drawable/bread"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        style="@style/EllipsizedTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_2mdp"
+                        android:layout_marginTop="@dimen/_2mdp"
+                        android:text="@string/bread" />
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/_10mdp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/snack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/snack" />
+
+                    <TextView
+                        style="@style/EllipsizedTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_2mdp"
+                        android:layout_marginTop="@dimen/_2mdp"
+                        android:text="@string/snack" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/_10mdp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/breakfast"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/breakfast" />
+
+                    <TextView
+                        style="@style/EllipsizedTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_2mdp"
+                        android:layout_marginTop="@dimen/_2mdp"
+                        android:text="@string/break_fast" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/_10mdp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/soup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/soup" />
+
+                    <TextView
+                        style="@style/EllipsizedTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_2mdp"
+                        android:layout_marginTop="@dimen/_2mdp"
+                        android:text="@string/soup" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/_10mdp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/drink"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/drink" />
+
+                    <TextView
+                        style="@style/EllipsizedTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_4mdp"
+                        android:layout_marginTop="@dimen/_2mdp"
+                        android:text="@string/drink" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/txtRestaurant"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10mdp"
+            android:text="@string/seeFiveStars"
+            android:textColor="@color/limedSpruce"
+            android:textSize="@dimen/_14font_mdp"
+            app:fontPath="fira_sans_bold.ttf"
+            android:layout_marginEnd="@dimen/_10mdp"
+            android:paddingStart="@dimen/_5mdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horScroll"
+            app:drawableEndCompat="@drawable/baseline_arrow_forward_24"
+            app:drawableTint="@color/BleuDeFrance" />
+
+        <TextView
+            android:id="@+id/txtRandom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5mdp"
+            android:layout_marginTop="@dimen/_10mdp"
+            android:text="@string/randomRecipe"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14font_mdp"
+            app:fontPath="fira_sans_bold.ttf"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtRestaurant" />
+
+        <com.todkars.shimmer.ShimmerRecyclerView
+            android:paddingBottom="@dimen/_90mdp"
+            android:clipToPadding="false"
+            android:id="@+id/randomList"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_8mdp"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/_5mdp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtRandom"
+            app:shimmer_recycler_auto_start="true"
+            app:shimmer_recycler_item_count="3"
+            app:shimmer_recycler_layout="@layout/item_random_meal_shimmer"
+            tools:listitem="@layout/item_random_meal" />
+
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/btnFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_marginEnd="@dimen/_10mdp"
+            android:layout_marginBottom="@dimen/_50mdp"
+            android:backgroundTint="@color/darkOrange"
+            android:text="@string/no_item"
+            android:textColor="@color/white"
+            app:icon="@drawable/meal"
+            app:iconTint="@color/cultured"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:shapeAppearanceOverlay="@style/RoundedImageView"
+            tools:targetApi="m" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>

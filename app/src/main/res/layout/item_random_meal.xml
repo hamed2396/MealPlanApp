@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+   android:paddingBottom="@dimen/_8mdp"
+    android:clipToPadding="false"
+    android:layout_marginBottom="@dimen/_8mdp"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_8mdp"
+        android:layout_marginTop="@dimen/_5mdp"
+        android:backgroundTint="@color/cultured"
+        app:cardCornerRadius="@dimen/_10mdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+     android:layout_marginBottom="@dimen/_10mdp"
+        app:cardElevation="@dimen/_5mdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+
+            android:layout_marginBottom="@dimen/_10mdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imgPoster"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_160mdp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8mdp"
+                android:layout_marginHorizontal="@dimen/_5mdp"
+                android:ellipsize="end"
+                android:textColor="@color/limedSpruce"
+                android:textSize="@dimen/_14font_mdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imgPoster"
+                tools:text="KETO Italian Beef" />
+
+            <TextView
+                android:id="@+id/txtTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12mdp"
+                android:drawablePadding="@dimen/_5mdp"
+                android:ellipsize="end"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/_10font_mdp"
+                app:drawableStartCompat="@drawable/time"
+                app:fontPath="fira_sans_light.ttf"
+                app:layout_constraintStart_toStartOf="@+id/txtTitle"
+                app:layout_constraintTop_toBottomOf="@id/txtTitle"
+                tools:text="40Min"
+                app:drawableTint="@color/gray" />
+
+            <TextView
+                android:id="@+id/txtCals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5mdp"
+                android:drawablePadding="@dimen/_5mdp"
+                android:ellipsize="end"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/_10font_mdp"
+                app:drawableStartCompat="@drawable/fire"
+                app:fontPath="fira_sans_light.ttf"
+                app:layout_constraintStart_toEndOf="@id/txtTime"
+                app:layout_constraintTop_toTopOf="@id/txtTime"
+                tools:text="400cals"
+                app:drawableTint="@color/gray" />
+
+            <TextView
+                android:id="@+id/txtCarbs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_8mdp"
+                android:maxEms="3"
+                android:maxLines="1"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/_12font_mdp"
+                app:drawableStartCompat="@drawable/dot"
+                app:fontPath="fira_sans_light.ttf"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/txtCals"
+                tools:text="4g" />
+
+            <TextView
+                android:id="@+id/txtProtein"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_5mdp"
+                android:maxEms="3"
+                android:maxLines="1"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/_12font_mdp"
+                app:drawableStartCompat="@drawable/dot"
+                app:fontPath="fira_sans_light.ttf"
+                app:layout_constraintEnd_toStartOf="@id/txtCarbs"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/txtCarbs"
+                tools:text="40g"
+                app:drawableTint="@color/violetsAreBlue" />
+            <TextView
+                android:id="@+id/txtFat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_5mdp"
+                android:maxEms="3"
+                android:maxLines="1"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/_12font_mdp"
+                app:drawableStartCompat="@drawable/dot"
+                app:fontPath="fira_sans_light.ttf"
+                app:layout_constraintEnd_toStartOf="@id/txtProtein"
+                app:layout_constraintTop_toTopOf="@id/txtProtein"
+                tools:text="40g"
+                app:drawableTint="@color/royalOrange" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
