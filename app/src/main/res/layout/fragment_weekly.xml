@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/viewContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/_5mdp"
+                    app:cardElevation="@dimen/_20mdp"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/fragment_gradient">
+
+                        <ImageView
+                            android:id="@+id/imgBack"
+                            style="@style/ColoredShadowLight"
+                            android:layout_width="@dimen/_22mdp"
+                            android:layout_height="@dimen/_22mdp"
+                            android:layout_margin="@dimen/_8mdp"
+                            android:background="@drawable/bg_circle_white"
+                            android:elevation="@dimen/_20mdp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/baseline_arrow_back_24" />
+
+                        <TextView
+                            android:id="@+id/textView4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/weekly_plan"
+                            android:textColor="@color/limedSpruce"
+                            android:textSize="@dimen/_12font_mdp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/imgChange"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_8mdp"
+                            android:src="@drawable/change"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView4"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/textView4"
+                            app:tint="@color/gray" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/recyclerViewContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingBottom="@dimen/_40mdp"
+                    android:visibility="gone"
+
+
+                    app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/_12mdp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35mdp"
+                            android:layout_marginHorizontal="@dimen/_8mdp"
+                            android:layout_marginTop="@dimen/_12mdp"
+                            android:background="@drawable/bg_txt_weekly"
+                            android:paddingStart="@dimen/_5mdp"
+                            android:paddingTop="10dp"
+
+                            android:text="@string/saturday"
+                            android:textColor="@color/limedSpruce"
+                            android:textSize="@dimen/_14font_mdp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/saturdayList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_8mdp"
+                            android:layout_marginTop="@dimen/_10mdp"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35mdp"
+                            android:layout_marginHorizontal="@dimen/_8mdp"
+                            android:layout_marginTop="@dimen/_12mdp"
+                            android:background="@drawable/bg_txt_weekly"
+                            android:paddingStart="@dimen/_5mdp"
+                            android:paddingTop="10dp"
+                            android:text="@string/sunday"
+                            android:textColor="@color/limedSpruce"
+                            android:textSize="@dimen/_14font_mdp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/sundayList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_8mdp"
+                            android:layout_marginTop="@dimen/_10mdp"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35mdp"
+                            android:layout_marginHorizontal="@dimen/_8mdp"
+                            android:layout_marginTop="@dimen/_12mdp"
+                            android:background="@drawable/bg_txt_weekly"
+                            android:paddingStart="@dimen/_5mdp"
+                            android:paddingTop="10dp"
+                            android:text="@string/monday"
+                            android:textColor="@color/limedSpruce"
+                            android:textSize="@dimen/_14font_mdp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/mondayList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_8mdp"
+                            android:layout_marginTop="@dimen/_10mdp"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35mdp"
+                            android:layout_marginHorizontal="@dimen/_8mdp"
+                            android:layout_marginTop="@dimen/_12mdp"
+                            android:background="@drawable/bg_txt_weekly"
+                            android:paddingStart="@dimen/_5mdp"
+                            android:paddingTop="10dp"
+                            android:text="@string/tuesday"
+                            android:textColor="@color/limedSpruce"
+                            android:textSize="@dimen/_14font_mdp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/tuesdayList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_8mdp"
+                            android:layout_marginTop="@dimen/_10mdp"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35mdp"
+                            android:layout_marginHorizontal="@dimen/_8mdp"
+                            android:layout_marginTop="@dimen/_12mdp"
+                            android:background="@drawable/bg_txt_weekly"
+                            android:paddingStart="@dimen/_5mdp"
+                            android:paddingTop="10dp"
+                            android:text="@string/wednesday"
+                            android:textColor="@color/limedSpruce"
+                            android:textSize="@dimen/_14font_mdp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/wednesdayList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_8mdp"
+                            android:layout_marginTop="@dimen/_10mdp"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35mdp"
+                            android:layout_marginHorizontal="@dimen/_8mdp"
+                            android:layout_marginTop="@dimen/_12mdp"
+                            android:background="@drawable/bg_txt_weekly"
+                            android:paddingStart="@dimen/_5mdp"
+                            android:paddingTop="10dp"
+                            android:text="@string/thursday"
+                            android:textColor="@color/limedSpruce"
+                            android:textSize="@dimen/_14font_mdp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/thursdayList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_8mdp"
+                            android:layout_marginTop="@dimen/_10mdp"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35mdp"
+                            android:layout_marginHorizontal="@dimen/_8mdp"
+                            android:layout_marginTop="@dimen/_12mdp"
+                            android:background="@drawable/bg_txt_weekly"
+                            android:paddingStart="@dimen/_5mdp"
+                            android:paddingTop="10dp"
+                            android:text="@string/friday"
+                            android:textColor="@color/limedSpruce"
+                            android:textSize="@dimen/_14font_mdp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/fridayList"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_8mdp"
+                            android:layout_marginTop="@dimen/_10mdp"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

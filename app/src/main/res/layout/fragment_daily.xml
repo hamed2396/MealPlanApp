@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:paddingBottom="@dimen/_30mdp"
+    android:clipToPadding="false"
+    android:layout_height="match_parent"
+    tools:context=".ui.unboadring.SignUpFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topContainer"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_15mdp"
+            android:text="@string/time_until_reset"
+            android:textColor="@color/limedSpruce"
+            android:textSize="@dimen/_14font_mdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+android:layout_marginEnd="@dimen/_5mdp"
+            android:clipToPadding="false"
+            android:id="@+id/TimerContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_30mdp"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/txtTitle"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/txtHour"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8mdp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_rounded_blue"
+                android:backgroundTint="@color/pastelRed"
+                android:padding="@dimen/_8mdp"
+                android:textAlignment="center"
+                android:textColor="@color/cultured"
+                android:textSize="@dimen/_10font_mdp"
+                tools:text="24h" />
+
+            <TextView
+                android:id="@+id/txtMinutes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8mdp"
+                android:layout_weight="1.2"
+                android:background="@drawable/bg_rounded_blue"
+                android:backgroundTint="@color/pastelRed"
+                android:padding="@dimen/_8mdp"
+                android:textAlignment="center"
+                android:textColor="@color/cultured"
+                android:textSize="@dimen/_10font_mdp"
+                tools:text="59m" />
+
+            <TextView
+                android:id="@+id/txtSeconds"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8mdp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_rounded_blue"
+                android:backgroundTint="@color/pastelRed"
+                android:padding="@dimen/_8mdp"
+                android:textAlignment="center"
+                android:textColor="@color/cultured"
+                android:textSize="@dimen/_10font_mdp"
+                tools:text="59s" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/topContainer"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/empty" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/listsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_5mdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topContainer">
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/exContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="invisible"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <com.skydoves.expandablelayout.ExpandableLayout
+                    android:id="@+id/exBreakFast"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15mdp"
+                    app:expandable_duration="100"
+                    app:expandable_isExpanded="false"
+                    app:expandable_parentLayout="@layout/expandable_breakfast_time"
+                    app:expandable_secondLayout="@layout/expandable_breakfast_time_child"
+                    app:expandable_showSpinner="true"
+                    app:expandable_spinner="@drawable/ic_arrow_down"
+                    app:expandable_spinner_animate="true"
+                    app:expandable_spinner_color="@color/cultured"
+                    app:expandable_spinner_gravity="start"
+                    app:expandable_spinner_margin="14dp"
+                    app:expandable_spinner_size="32dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.skydoves.expandablelayout.ExpandableLayout
+                    android:id="@+id/exLunch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15mdp"
+                    app:expandable_duration="100"
+                    app:expandable_isExpanded="false"
+                    app:expandable_parentLayout="@layout/expandable_lunch_time"
+                    app:expandable_secondLayout="@layout/expandable_breakfast_time_child"
+                    app:expandable_showSpinner="true"
+                    app:expandable_spinner="@drawable/ic_arrow_down"
+                    app:expandable_spinner_animate="true"
+                    app:expandable_spinner_color="@color/cultured"
+                    app:expandable_spinner_gravity="start"
+                    app:expandable_spinner_margin="14dp"
+                    app:expandable_spinner_size="32dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.skydoves.expandablelayout.ExpandableLayout
+                    android:paddingBottom="@dimen/_25mdp"
+                    android:id="@+id/exDinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15mdp"
+                    app:expandable_duration="100"
+                    app:expandable_isExpanded="false"
+                    android:clipToPadding="false"
+                    app:expandable_parentLayout="@layout/expandable_dinner_time"
+                    app:expandable_secondLayout="@layout/expandable_breakfast_time_child"
+                    app:expandable_showSpinner="true"
+                    app:expandable_spinner="@drawable/ic_arrow_down"
+                    app:expandable_spinner_animate="true"
+                    app:expandable_spinner_color="@color/cultured"
+                    app:expandable_spinner_gravity="start"
+                    app:expandable_spinner_margin="14dp"
+                    app:expandable_spinner_size="32dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="@dimen/_30mdp"
+            android:src="@drawable/baseline_arrow_forward_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/cultured"
+            tools:ignore="ContentDescription" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
