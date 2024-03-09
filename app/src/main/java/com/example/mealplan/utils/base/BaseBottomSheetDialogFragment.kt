@@ -10,6 +10,7 @@ import com.crazylegend.kotlinextensions.ifNull
 import com.example.mealplan.R
 import com.example.mealplan.utils.extensions.launchLifeCycleScope
 import com.example.mealplan.utils.network.NetworkChecker
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import javax.inject.Inject
 
@@ -34,9 +35,11 @@ abstract class BaseBottomSheetDialogFragment<VB : ViewBinding>(private val bindi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        BottomSheetBehavior.PEEK_HEIGHT_AUTO
         launchLifeCycleScope {
             networkChecker.checkNetwork().collect {
                 isNetworkAvailable = it
+
             }
         }
     }

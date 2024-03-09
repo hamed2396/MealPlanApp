@@ -23,16 +23,12 @@ open class FullHeightBottomSheet<VB : ViewBinding > (bindingInflater:(LayoutInfl
                 bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
             parentLayout?.let {
                 val behaviour = BottomSheetBehavior.from(it)
-                setupFullHeight(it)
+               // setupFullHeight(it)
                 behaviour.state = BottomSheetBehavior.STATE_EXPANDED
             }
         }
         return dialog
     }
 
-    private fun setupFullHeight(bottomSheet: View) {
-        val layoutParams = bottomSheet.layoutParams
-        layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT
-        bottomSheet.layoutParams = layoutParams
-    }
+
 }

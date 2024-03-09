@@ -60,7 +60,6 @@
                 android:id="@+id/youtubePlayer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/soup"
                 android:visibility="gone"
                 app:autoPlay="false" />
         </androidx.constraintlayout.widget.ConstraintLayout>

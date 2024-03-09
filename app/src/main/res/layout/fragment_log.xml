@@ -1,11 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.unboadring.SignUpFragment">
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/_60mdp"
+        tools:context=".ui.unboadring.SignUpFragment">
+
+        <ImageView
+            android:id="@+id/imgCook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/cooking"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
+        <com.bitvale.valueprogress.ValueProgress
+            android:id="@+id/valueDinner"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="28dp"
+            app:layout_constraintBottom_toBottomOf="@+id/valueBreakfast"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/valueBreakfast"
+            app:progress_color="@color/bananaYellow"
+            app:progress_max_value="100"
+            app:progress_text_color="@color/mayaBlue"
+            app:progress_value_symbol="%" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/dinnerTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/dinner"
+            android:textColor="@color/bananaYellow"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/valueDinner"
+            app:layout_constraintStart_toStartOf="@+id/valueDinner"
+            app:layout_constraintTop_toBottomOf="@+id/valueDinner" />
+
+        <TextView
+            android:id="@+id/txtDailyProgressValur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8mdp"
+            android:text="@string/your_daily_calories"
+            android:textColor="@color/limedSpruce"
+            android:textSize="@dimen/_12font_mdp"
+            app:fontPath="font/fira_sans_light"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imgCook" />
+
+        <com.bitvale.valueprogress.ValueProgress
+            android:id="@+id/valueBreakfast"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="@dimen/_30mdp"
+            app:layout_constraintEnd_toStartOf="@+id/valueLunch"
+            app:layout_constraintStart_toEndOf="@+id/valueDinner"
+            app:layout_constraintTop_toBottomOf="@+id/txtDailyProgressValur"
+            app:progress_color="@color/greenLizard"
+            app:progress_max_value="100"
+            app:progress_text_color="@color/mayaBlue"
+            app:progress_value_symbol="%" />
+
+        <TextView
+            android:id="@+id/breakfastTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/break_fast"
+            android:textColor="@color/greenLizard"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/valueBreakfast"
+            app:layout_constraintStart_toStartOf="@+id/valueBreakfast"
+            app:layout_constraintTop_toBottomOf="@+id/valueBreakfast" />
+
+        <com.bitvale.valueprogress.ValueProgress
+            android:id="@+id/valueLunch"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintBottom_toBottomOf="@+id/valueBreakfast"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/valueBreakfast"
+            app:progress_color="@color/violetsAreBlue"
+            app:progress_max_value="100"
+            app:progress_text_color="@color/mayaBlue"
+            app:progress_value_symbol="%" />
+
+        <TextView
+            android:id="@+id/lunchTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/lunch"
+            android:textColor="@color/violetsAreBlue"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/valueLunch"
+            app:layout_constraintStart_toStartOf="@+id/valueLunch"
+            app:layout_constraintTop_toBottomOf="@+id/valueLunch" />
+
+        <TextView
+            android:id="@+id/txtLunchOver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5mdp"
+            android:textColor="@color/venetianRed"
+            android:textSize="14sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/lunchTitle"
+            app:layout_constraintHorizontal_bias="0.508"
+            app:layout_constraintStart_toStartOf="@+id/lunchTitle"
+            app:layout_constraintTop_toBottomOf="@+id/lunchTitle" />
+
+        <TextView
+            android:id="@+id/txtBreakfastOver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5mdp"
+            android:textColor="@color/venetianRed"
+            android:textSize="14sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/breakfastTitle"
+
+            app:layout_constraintStart_toStartOf="@+id/breakfastTitle"
+            app:layout_constraintTop_toBottomOf="@+id/breakfastTitle" />
+
+        <TextView
+            android:id="@+id/txtDinnerOver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5mdp"
+            android:textColor="@color/venetianRed"
+            android:textSize="14sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/dinnerTitle"
+
+            app:layout_constraintStart_toStartOf="@+id/dinnerTitle"
+            app:layout_constraintTop_toBottomOf="@+id/dinnerTitle" />
+
+        <TextView
+            android:id="@+id/weeklyTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8mdp"
+            android:layout_marginTop="@dimen/_18mdp"
+            android:text="@string/your_weekly_calories"
+            android:textColor="@color/limedSpruce"
+            android:textSize="@dimen/_12font_mdp"
+            app:fontPath="font/fira_sans_light"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/breakfastTitle" />
+
+        <org.eazegraph.lib.charts.BarChart
+            android:id="@+id/barChart"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_250mdp"
+            android:layout_marginTop="@dimen/_10mdp"
+            android:padding="10dp"
+            android:visibility="gone"
+            app:egBarWidth="20dp"
+            app:egFixedBarWidth="true"
+            app:egLegendHeight="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/weeklyTitle" />
+
+        <TextView
+            android:id="@+id/txtNoWeeklyItem"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:textSize="@dimen/_14font_mdp"
+            android:text="@string/your_weekly_plan_is_empty"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/bg_shadow_white"
+            app:layout_constraintTop_toBottomOf="@id/weeklyTitle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

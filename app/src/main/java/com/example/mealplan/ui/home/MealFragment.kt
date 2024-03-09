@@ -1,8 +1,10 @@
 package com.example.mealplan.ui.home
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.crazylegend.kotlinextensions.activity.setStatusBarColor
@@ -14,11 +16,13 @@ import com.example.mealplan.data.models.meal.ResponseRandomMeal
 import com.example.mealplan.databinding.FragmentMealBinding
 import com.example.mealplan.utils.Constants
 import com.example.mealplan.utils.base.BaseFragment
+import com.example.mealplan.utils.extensions.commaSeparator
 import com.example.mealplan.utils.extensions.infiniteSnackBar
 import com.example.mealplan.utils.extensions.isBiggerThan
 import com.example.mealplan.utils.extensions.isLessThan
 import com.example.mealplan.utils.network.NetworkStatus
 import com.example.mealplan.viewmodel.MealViewModel
+import com.example.mealplan.viewmodel.PlanViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -28,10 +32,13 @@ class MealFragment : BaseFragment<FragmentMealBinding>(FragmentMealBinding::infl
     @Inject
     lateinit var randomMealAdapter: RandomMealAdapter
     private val viewModel by activityViewModels<MealViewModel>()
+    private val planViewModel by viewModels<PlanViewModel>()
+    private var calAmount = 0
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         requireActivity().setStatusBarColor(compatColor(R.color.greenLizard))
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+            planViewModel.getAllMeals()
             viewModel.provideQueries()
             txtRestaurant.setOnClickListener { findNavController().navigate(R.id.actionNavMainToNavRestaurant) }
             //hide or shrink fab button
@@ -49,8 +56,31 @@ class MealFragment : BaseFragment<FragmentMealBinding>(FragmentMealBinding::infl
             //load data
             loaRandomData()
             mealTypeClickHandler()
+            showCaloriesInFab()
 
 
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun showCaloriesInFab() {
+
+        planViewModel.getAllMeals.observe(viewLifecycleOwner) { entities ->
+            if (entities.isNullOrEmpty()) calAmount = 0
+            else {
+                calAmount = 0
+                entities.forEach {
+                    it.calories?.let { amount ->
+
+                        calAmount += amount
+                    }
+
+                }
+            }
+
+            if (calAmount != 0) {
+                binding.btnFab.text = "${calAmount.commaSeparator} Cal"
+            }
         }
     }
 

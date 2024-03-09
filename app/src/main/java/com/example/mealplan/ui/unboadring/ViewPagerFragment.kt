@@ -38,7 +38,7 @@ class ViewPagerFragment :
         binding.apply {
             viewPager.apply {
                 adapter = onBoardingViewPager
-                //create fragment behind the scene .its for user not seeing lotti anim getting created while navigating
+                //create fragment behind the scene .its for user not seeing lottie anim getting created while navigating
                 //-1 because it don't need to preRender signUp fragment
                 offscreenPageLimit = onBoardingViewPager.itemCount.minus(1)
             }

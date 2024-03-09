@@ -87,6 +87,28 @@
     <string name="steps">Steps</string>
     <string name="ingredient">Ingredient</string>
     <string name="nutrition_chart">Nutrition Chart</string>
+    <string name="add_to">Add To ?</string>
+    <string name="lunch">Lunch</string>
+    <string name="time_until_reset">Time Until Reset</string>
+    <string name="weekly">Weekly</string>
+    <string name="deleted_from_daily_plan">Deleted From Daily Plan</string>
+    <string name="auto_generated_plan">Auto Generated Plan</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="weekly_plan">Weekly Plan</string>
+    <string name="change_meal_plan">Change Meal Plan?</string>
+    <string name="change">Change</string>
+    <string name="cancel">Cancel</string>
+    <string name="similar_recipe">Similar Recipe</string>
+    <string name="no_item_has_been_added">NO Item Has Been Added</string>
+    <string name="your_daily_calories">Your Daily Calories</string>
+    <string name="your_weekly_calories">Your Weekly Calories</string>
+    <string name="your_weekly_plan_is_empty">Your Weekly Plan Is Empty</string>
 
 
 </resources>

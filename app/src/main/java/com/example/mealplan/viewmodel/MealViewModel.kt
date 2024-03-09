@@ -1,6 +1,5 @@
 package com.example.mealplan.viewmodel
 
-import ResponseRestaurant
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

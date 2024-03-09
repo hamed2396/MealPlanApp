@@ -78,7 +78,15 @@
             android:id="@+id/planFragment"
             android:name="com.example.mealplan.ui.home.PlanFragment"
             android:label="@string/planFragment"
-            tools:layout="@layout/fragment_plan" />
+            tools:layout="@layout/fragment_plan">
+            <action
+                android:id="@+id/actionToNavDetail"
+                app:destination="@id/navigationDetail">
+                <argument
+                    android:name="detailId"
+                    app:argType="integer" />
+            </action>
+        </fragment>
         <fragment
             android:id="@+id/searchFragment"
             android:name="com.example.mealplan.ui.home.SearchFragment"
@@ -158,7 +166,8 @@
             android:label="MacroFilterFragment"
             tools:layout="@layout/fragment_login" />
     </navigation>
-    <navigation android:id="@+id/navigationDetail"
+    <navigation
+        android:id="@+id/navigationDetail"
         app:startDestination="@id/detailFragment">
         <fragment
             android:id="@+id/detailFragment"
@@ -169,20 +178,52 @@
                 android:name="detailId"
                 app:argType="integer" />
             <argument
+                app:nullable="true"
+                android:defaultValue="@null"
                 android:name="steps"
                 app:argType="com.example.mealplan.data.models.meal.ResponseRandomMeal$Result$AnalyzedInstruction" />
             <action
                 android:id="@+id/actionToStep"
                 app:destination="@id/stepFragment2" />
+            <action
+                android:id="@+id/actionToDetail"
+                app:destination="@id/navigationDetail">
+                <argument
+                    android:name="detailId"
+                    app:argType="integer" />
+            </action>
         </fragment>
         <dialog
             android:id="@+id/stepFragment2"
             android:name="com.example.mealplan.ui.detail.StepFragment"
-            android:label="StepFragment" >
+            android:label="StepFragment">
             <argument
                 android:name="stepList"
                 app:argType="com.example.mealplan.data.models.meal.ResponseRandomMeal$Result$AnalyzedInstruction" />
         </dialog>
+    </navigation>
+    <navigation
+        android:id="@+id/nav_plan"
+        app:startDestination="@id/weeklyFragment">
+        <fragment
+            android:id="@+id/weeklyFragment"
+            android:name="com.example.mealplan.ui.planViewPager.WeeklyFragment"
+            android:label="WeeklyFragment"
+            tools:layout="@layout/fragment_weekly">
+            <action
+                android:id="@+id/actionToNavDetail"
+                app:destination="@id/navigationDetail">
+                <argument
+                    android:name="detailId"
+                    app:argType="integer" />
+            </action>
+
+        </fragment>
+        <fragment
+            android:id="@+id/dailyFragment"
+            android:name="com.example.mealplan.ui.planViewPager.DailyFragment"
+            android:label="DailyFragment"
+            tools:layout="@layout/fragment_daily"/>
     </navigation>
 
 </navigation>

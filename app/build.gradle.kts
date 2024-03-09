@@ -54,14 +54,15 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-   //extensions
+    //extensions
     val utilsVersion = "2.2.10"
-    implementation ("com.github.FunkyMuse.KAHelpers:viewbinding:$utilsVersion")
-    implementation ("com.github.FunkyMuse.KAHelpers:recyclerview:$utilsVersion")
-    implementation ("com.github.FunkyMuse.KAHelpers:kotlinextensions:$utilsVersion")
+    implementation("com.github.FunkyMuse.KAHelpers:viewbinding:$utilsVersion")
+    implementation("com.github.FunkyMuse.KAHelpers:recyclerview:$utilsVersion")
+    implementation("com.github.FunkyMuse.KAHelpers:kotlinextensions:$utilsVersion")
 
     //retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
@@ -107,15 +108,19 @@ dependencies {
     implementation("com.todkars:shimmer-recyclerview:0.4.1")
     implementation("com.airbnb.android:lottie:5.2.0")
     implementation("com.github.MrNouri:DynamicSizes:1.0")
-    implementation ("com.bitvale:lavafab:1.0.1")
-    implementation ("com.tbuonomo:dotsindicator:4.2")
+    implementation("com.tbuonomo:dotsindicator:4.2")
     implementation("com.github.skydoves:balloon:1.5.4")
-    implementation ("com.github.skydoves:expandablelayout:1.0.7")
-    implementation ("com.github.skydoves:progressview:1.1.3")
-    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
-    implementation ("com.github.skydoves:androidveil:1.1.3")
-    implementation ("com.paulrybitskyi.valuepicker:valuepicker:1.0.3")
-    implementation ("kr.co.prnd:readmore-textview:1.0.0")
+    implementation("com.github.skydoves:expandablelayout:1.0.7")
+    implementation("com.github.skydoves:progressview:1.1.3")
+    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
+    implementation("com.github.skydoves:androidveil:1.1.3")
+    implementation("com.paulrybitskyi.valuepicker:valuepicker:1.0.3")
+    implementation("kr.co.prnd:readmore-textview:1.0.0")
+    implementation("com.bitvale:valueprogress:1.0.1")
+    implementation ("com.github.AAChartModel:AAChartCore:-SNAPSHOT")
+
+       implementation("com.github.blackfizz:eazegraph:1.2.5l@aar")
+       implementation("com.nineoldandroids:library:2.4.0")
 
 
 

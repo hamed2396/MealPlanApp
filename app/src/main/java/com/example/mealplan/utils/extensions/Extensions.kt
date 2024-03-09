@@ -24,7 +24,9 @@ import com.crazylegend.kotlinextensions.views.color
 import com.crazylegend.kotlinextensions.views.colorStateList
 import com.crazylegend.kotlinextensions.views.textColor
 import com.example.mealplan.R
+import com.example.mealplan.databinding.ChangePlanMealBinding
 import com.example.mealplan.databinding.ItemNutritionTooltipBinding
+import com.example.mealplan.databinding.PlanMealLayBinding
 import com.example.mealplan.utils.Constants
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
@@ -129,6 +131,38 @@ fun View.showToolTip(title: String, amount: String) {
     }
 }
 
+fun View.showPlanMenu(layoutClicked: (String) -> Unit) {
+    val binding: PlanMealLayBinding = PlanMealLayBinding.inflate(LayoutInflater.from(context))
+    val balloon = Balloon.Builder(context)
+        .setLayout(binding.root)
+        .setArrowSize(8)
+        .setArrowColor(color(R.color.limedSpruce))
+        .setArrowPosition(0.8f)
+        .setBackgroundColor(color(R.color.limedSpruce))
+        .setCornerRadius(8f)
+        .setBalloonAnimation(BalloonAnimation.ELASTIC)
+        .setLifecycleOwner(findViewTreeLifecycleOwner())
+        .build()
+
+    binding.breakfast.setOnClickListener {
+        layoutClicked(Constants.BREAKFAST)
+        balloon.dismiss()
+    }
+
+    binding.lunch.setOnClickListener {
+        layoutClicked(Constants.LUNCH)
+        balloon.dismiss()
+    }
+
+    binding.dinner.setOnClickListener {
+        layoutClicked(Constants.DINNER)
+        balloon.dismiss()
+    }
+
+    balloon.showAlignBottom(this)
+}
+
+
 fun View.infiniteSnackBar(
     title: String,
     actionName: String,
@@ -150,56 +184,75 @@ fun View.infiniteSnackBar(
 
     snackBar.show()
 }
+fun View.showChangePlan(changePlan:Balloon.() -> Unit) {
+    val binding: ChangePlanMealBinding = ChangePlanMealBinding.inflate(LayoutInflater.from(context))
+    val balloon = Balloon.Builder(context)
+        .setLayout(binding.root)
+        .setArrowSize(8)
+        .setArrowColor(color(R.color.limedSpruce))
+        .setArrowPosition(.9f)
+        .setBackgroundColor(color(R.color.limedSpruce))
+        .setCornerRadius(8f)
+        .setMarginRight(8)
+        .setBalloonAnimation(BalloonAnimation.FADE)
+        .setLifecycleOwner(findViewTreeLifecycleOwner())
+        .build()
+    binding.btnChange.setOnClickListener { changePlan(balloon) }
+    binding.btnCancel.setOnClickListener { balloon.dismiss() }
+    balloon.showAlignBottom(this)
+}
 
-fun ChipGroup.setupChip(list: MutableList<String>) {
-    list.forEach {
-        val state = ColorStateList(
-            arrayOf(intArrayOf(android.R.attr.state_checked), intArrayOf()),
-            intArrayOf(color(R.color.white), color(R.color.limedSpruce))
-        )
-        val drawable = ChipDrawable.createFromAttributes(context, null, 0, R.style.greenChip)
-        Chip(context).also { chip ->
-            chip.setChipDrawable(drawable)
-            chip.text = it
-            chip.setTextColor(state)
-            chip.textSize = 16f
-            chip.tag = it
-            chip.chipStrokeWidth = .7f
-            chip.chipStrokeColor = colorStateList(R.color.grayAlpha)
-            addView(chip)
+    fun ChipGroup.setupChip(list: MutableList<String>) {
+        list.forEach {
+            val state = ColorStateList(
+                arrayOf(intArrayOf(android.R.attr.state_checked), intArrayOf()),
+                intArrayOf(color(R.color.white), color(R.color.limedSpruce))
+            )
+            val drawable = ChipDrawable.createFromAttributes(context, null, 0, R.style.greenChip)
+            Chip(context).also { chip ->
+                chip.setChipDrawable(drawable)
+                chip.text = it
+                chip.setTextColor(state)
+                chip.textSize = 16f
+                chip.tag = it
+                chip.chipStrokeWidth = .7f
+                chip.chipStrokeColor = colorStateList(R.color.grayAlpha)
+                addView(chip)
+            }
         }
     }
-}
 
 
-fun ChipGroup.autoSelectChip(chipText: String?) {
-    for (i in 0 until childCount) {
-        val chip = getChildAt(i) as? Chip
-        if (chip != null && chipText != null && chip.text == chipText) {
-            chip.isChecked = true
-            break
+    fun ChipGroup.autoSelectChip(chipText: String?) {
+        for (i in 0 until childCount) {
+            val chip = getChildAt(i) as? Chip
+            if (chip != null && chipText != null && chip.text == chipText) {
+                chip.isChecked = true
+                break
+            }
         }
     }
-}
 
-fun TextView.fade(fadeIn: Boolean) {
-    val fade: ObjectAnimator
-    if (fadeIn) {
-        fade = ObjectAnimator.ofFloat(this, "alpha", 0f, 1f)
-        fade.duration = 400 // Adjust the duration as needed
+    fun TextView.fade(fadeIn: Boolean) {
+        val fade: ObjectAnimator
+        if (fadeIn) {
+            fade = ObjectAnimator.ofFloat(this, "alpha", 0f, 1f)
+            fade.duration = 400 // Adjust the duration as needed
 
-        fade.start()
-    } else {
-        fade = ObjectAnimator.ofFloat(this, "alpha", 1f, 0f)
-        fade.duration = 400 // Adjust the duration as needed
-        fade.start()
+            fade.start()
+        } else {
+            fade = ObjectAnimator.ofFloat(this, "alpha", 1f, 0f)
+            fade.duration = 400 // Adjust the duration as needed
+            fade.start()
+        }
+
     }
 
-}
-fun Int.minToHour(): String {
-    val time: String
-    val hours: Int = this / 60
-    val minutes: Int = this % 60
-    time = if (hours > 0) "${hours}h:${minutes}min" else "${minutes}min"
-    return time
-}
+    fun Int.minToHour(): String {
+        val time: String
+        val hours: Int = this / 60
+        val minutes: Int = this % 60
+        time = if (hours > 0) "${hours}h:${minutes}min" else "${minutes}min"
+        return time
+    }
+

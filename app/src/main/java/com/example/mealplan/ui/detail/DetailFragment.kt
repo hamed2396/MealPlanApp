@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.text.parseAsHtml
 import androidx.fragment.app.viewModels
@@ -12,9 +13,14 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.work.OneTimeWorkRequest
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 import coil.load
 import com.crazylegend.kotlinextensions.collections.isNotNullOrEmpty
 import com.crazylegend.kotlinextensions.ifFalse
+import com.crazylegend.kotlinextensions.root.logError
 import com.crazylegend.kotlinextensions.string.isNotNullOrEmpty
 import com.crazylegend.kotlinextensions.views.gone
 import com.crazylegend.kotlinextensions.views.snackbar
@@ -22,15 +28,21 @@ import com.crazylegend.kotlinextensions.views.visible
 import com.crazylegend.recyclerview.initRecyclerViewAdapter
 import com.example.mealplan.R
 import com.example.mealplan.adapters.detail.IngredientAdapter
+import com.example.mealplan.adapters.detail.SimilarAdapter
 import com.example.mealplan.adapters.detail.StepsAdapter
+import com.example.mealplan.data.db.entity.DailyMealEntity
 import com.example.mealplan.data.models.detail.ResponseNutrition
 import com.example.mealplan.data.models.meal.ResponseRandomMeal
 import com.example.mealplan.databinding.FragmentDetailBinding
 import com.example.mealplan.utils.Constants
+import com.example.mealplan.utils.DeleteDataBaseWorker
 import com.example.mealplan.utils.base.BaseFragment
+import com.example.mealplan.utils.events.Event
+import com.example.mealplan.utils.events.EventBus
 import com.example.mealplan.utils.extensions.infiniteSnackBar
 import com.example.mealplan.utils.extensions.launchLifeCycleScope
 import com.example.mealplan.utils.extensions.loadImage
+import com.example.mealplan.utils.extensions.showPlanMenu
 import com.example.mealplan.utils.network.NetworkStatus
 import com.example.mealplan.viewmodel.DetailViewModel
 import com.google.android.material.tabs.TabLayout
@@ -43,7 +55,10 @@ import com.skydoves.androidveil.VeilLayout
 import com.skydoves.progressview.ProgressView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.Calendar
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
+import kotlin.math.roundToInt
 
 
 @AndroidEntryPoint
@@ -73,9 +88,19 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
     @Inject
     lateinit var ingredientAdapter: IngredientAdapter
 
+    @Inject
+    lateinit var entity: DailyMealEntity
+    @Inject
+    lateinit var similarAdapter: SimilarAdapter
+
     private lateinit var steps: List<ResponseRandomMeal.Result.AnalyzedInstruction.Step>
 
     private var expanded = MutableLiveData<Boolean>()
+    private var existInDb = false
+    private var mealTime: String? = ""
+    private var itemsExistInDb = false
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
@@ -83,11 +108,132 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
             handleTabLayout()
             viewModel.callMealInformation(args.detailId)
             loadInfoData()
+            loadSimilarData()
+            checkDataBase()
             loadVideoData()
             getChartData()
             setupExpandableDailyNutrition()
             observeExpandState()
             loadNutritionData()
+            viewModel.getAllMeals()
+            loadAnyItemInDbExist()
+
+            layoutExpandableNutrition.imgPlan.setOnClickListener {
+                findMealTime()?.let { itTime ->
+                    entity.mealTime = itTime
+                }
+                if (existInDb && entity.mealTime != null) {
+                    viewModel.deleteDailyToDb(entity)
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.deleted_from_daily_plan), Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    it.showPlanMenu { time ->
+                        entity.mealTime = time
+                        viewModel.insertDailyToDb(entity)
+
+                        if (!itemsExistInDb) {
+
+                            handleTimer()
+
+                        }
+                    }
+                }
+
+            }
+
+
+        }
+    }
+
+    private fun loadSimilarData() {
+        binding.apply {
+            viewModel.similarRecipe.observe(viewLifecycleOwner) {
+                when (it) {
+                    is NetworkStatus.Error -> {
+                        root.infiniteSnackBar(
+                            it.error!!,
+                            actionName = getString(R.string.retry),
+                            action = { viewModel.callSimilarRecipe(args.detailId) },
+                            actionColor = R.color.mayaBlue
+                        )
+                        layoutExpandableNutrition.similarList.hideShimmer()
+                    }
+
+                    is NetworkStatus.Loading -> {
+                        layoutExpandableNutrition.similarList.showShimmer()
+                    }
+
+                    is NetworkStatus.Success -> {
+                        layoutExpandableNutrition.similarList.hideShimmer()
+                        similarAdapter.setData(it.success!!)
+                        layoutExpandableNutrition.similarList.initRecyclerViewAdapter(
+                            similarAdapter,
+                            LinearLayoutManager(
+                                requireContext(),
+                                LinearLayoutManager.HORIZONTAL,
+                                false
+                            )
+                        )
+                        similarAdapter.setOnItemClickListener {id->
+                            DetailFragmentDirections.actionToDetail(id).apply {
+                                findNavController().navigate(this)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun handleTimer() {
+        val now = Calendar.getInstance()
+        val midnight = Calendar.getInstance().apply {
+            set(Calendar.HOUR_OF_DAY, 0)
+            set(Calendar.MINUTE, 0)
+            set(Calendar.SECOND, 0)
+            add(Calendar.DAY_OF_MONTH, 1) // Set to tomorrow
+        }
+        val initialDelay = midnight.timeInMillis - now.timeInMillis
+
+        // Schedule the periodic work request to trigger the DeleteRecordsWorker at midnight
+        val deleteRequest: OneTimeWorkRequest = OneTimeWorkRequestBuilder<DeleteDataBaseWorker>()
+            .setInitialDelay(initialDelay, TimeUnit.MILLISECONDS)
+            .build()
+        Constants.WORKER_ID = deleteRequest.id
+
+        WorkManager.getInstance(requireContext()).enqueue(deleteRequest)
+
+    }
+
+    private fun loadAnyItemInDbExist() {
+
+        viewModel.getAllMeals.observe(viewLifecycleOwner) {
+            launchLifeCycleScope {
+
+                EventBus.publish(Event.CancelWorker(it))
+            }
+            itemsExistInDb = it.isNotEmpty()
+
+        }
+
+    }
+
+
+    private fun findMealTime(): String? {
+        val time = viewModel.getSingleMealById(args.detailId)
+        mealTime = time?.mealTime
+        return mealTime
+    }
+
+    private fun checkDataBase() {
+        viewModel.existMeal(args.detailId).observe(viewLifecycleOwner) {
+            existInDb = it
+            if (it)
+                binding.layoutExpandableNutrition.imgPlan.load(R.drawable.tick)
+            else
+                binding.layoutExpandableNutrition.imgPlan.load(R.drawable.baseline_add_24)
 
 
         }
@@ -195,7 +341,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
                     }
 
                     is NetworkStatus.Success -> {
-
+                        viewModel.callSimilarRecipe(args.detailId)
                         loading.gone()
                         //handle video
 
@@ -217,7 +363,9 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
                             txtHealthScore.text = it.success.healthScore.toString()
                             txtPrice.text = it.success.pricePerServing.toString()
                             txtReadMoreDesc.text = it.success.summary?.parseAsHtml()
-                            val arg = args.steps as ResponseRandomMeal.Result.AnalyzedInstruction
+                            handleStepList()
+
+
                             it.success?.extendedIngredients?.let { ingredient ->
                                 ingredientAdapter.setData(ingredient)
                                 binding.layoutIngredient.randomList.initRecyclerViewAdapter(
@@ -234,24 +382,15 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
                             }
 
 
-
-                            arg.let { list ->
-                                list.steps?.let { stepList ->
-                                    steps = stepList
-                                    initStepsList(steps)
-                                    stepsShowMore.setOnClickListener {
-                                        if (stepList.isNotNullOrEmpty) {
-                                            DetailFragmentDirections.actionToStep(list).apply {
-                                                findNavController().navigate(this)
-                                            }
-                                        } else {
-                                            stepsShowMore.gone()
-                                        }
-                                    }
-
-                                }
+                        }
+                        //ENTITY FOR DB
+                        it.success.also {
+                            entity.apply {
+                                id = it.id
+                                title = it.title
+                                calories = it.nutrition?.nutrients?.get(0)?.amount!!.roundToInt()
+                                image = it.image
                             }
-
                         }
 
 
@@ -259,6 +398,33 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
                 }
             }
         }
+    }
+
+    private fun handleStepList() {
+        if (args.steps != null) {
+            (args.steps as ResponseRandomMeal.Result.AnalyzedInstruction)?.let { list ->
+                list.steps?.let { stepList ->
+                    steps = stepList
+                    initStepsList(steps)
+                    binding.layoutExpandableNutrition.stepsShowMore.setOnClickListener {
+                        if (stepList.isNotNullOrEmpty) {
+                            DetailFragmentDirections.actionToStep(list).apply {
+                                findNavController().navigate(this)
+                            }
+                        } else {
+                            binding.layoutExpandableNutrition.stepsShowMore.gone()
+                        }
+                    }
+                    //  if (args.steps as ResponseRandomMeal.Result.AnalyzedInstruction == null)
+
+
+                }
+
+            }
+        } else {
+            binding.layoutExpandableNutrition.stepTitle.gone()
+        }
+
     }
 
     private fun initStepsList(list: List<ResponseRandomMeal.Result.AnalyzedInstruction.Step>) {
@@ -483,17 +649,16 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
         if (Constants.VitaminB3_INDEX != null) {
             responseForVitaminB3 = Triple(
                 0f,
-                    list[Constants.VitaminB3_INDEX!!].percentOfDailyNeeds!!.toFloat(),
-                    list[Constants.VitaminB3_INDEX!!].amount!!.toFloat(),
+                list[Constants.VitaminB3_INDEX!!].percentOfDailyNeeds!!.toFloat(),
+                list[Constants.VitaminB3_INDEX!!].amount!!.toFloat(),
             )
 
         }
         if (Constants.VitaminE_INDEX != null) {
             responseForVitaminE = Triple(
                 0f,
-                    list[Constants.VitaminE_INDEX!!].percentOfDailyNeeds!!.toFloat()
-                ,
-                    list[Constants.VitaminE_INDEX!!].amount!!.toFloat()
+                list[Constants.VitaminE_INDEX!!].percentOfDailyNeeds!!.toFloat(),
+                list[Constants.VitaminE_INDEX!!].amount!!.toFloat()
             )
         }
 
@@ -540,6 +705,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
             initProgressViews()
             setupPickerView()
             parentLayout.setOnClickListener {
+                //expandable views has a expanded Listener. so you can use that instead of this
                 expanded.postValue(isExpanded)
                 if (isExpanded) {
                     collapse()
@@ -585,9 +751,9 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
             if (::responseForFiber.isInitialized) {
                 initializeNutrientProperties(
                     this,
-                   responseForFiber.first,
-                   responseForFiber.second,
-                   responseForFiber.third,
+                    responseForFiber.first,
+                    responseForFiber.second,
+                    responseForFiber.third,
                     "${getString(R.string.fiber)} (${responseForFiber.third})"
                 )
             } else {
@@ -757,16 +923,6 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
             visible()
             load(R.drawable.no_content_found)
         }
-    }
-
-
-    //convert to Milligrams because the mass of them are so small to show.need something a bit bigger
-    private fun microgramsToMilligrams(micrograms: Float): Float {
-        return micrograms / 1000f
-    }
-
-    private fun iuToMilligrams(iu: Float, conversionFactor: Float): Float {
-        return iu * conversionFactor
     }
 
     //set min max and progress value to progress view

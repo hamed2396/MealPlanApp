@@ -10,10 +10,6 @@
         android:title="@string/search" />
 
     <item
-        android:id="@+id/faSb"
-        android:title="" />
-
-    <item
         android:id="@+id/mealFragment"
         android:icon="@drawable/meal"
         android:title="@string/meal" />

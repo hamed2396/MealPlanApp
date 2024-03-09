@@ -45,7 +45,7 @@ abstract class BaseFragment<VB : ViewBinding>(private val bindingInflater: (Layo
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+       // _binding = null
     }
 
 

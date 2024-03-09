@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
+import com.crazylegend.kotlinextensions.root.logError
 import com.crazylegend.kotlinextensions.views.disable
 import com.crazylegend.kotlinextensions.views.enable
 import com.example.mealplan.databinding.FragmentMacroFilterBinding
@@ -210,6 +211,11 @@ class MacroFilterFragment :
                 )
             }
         }
+    }
+
+    override fun onDestroyView() {
+        "mdddacro".logError()
+        super.onDestroyView()
     }
 }
 

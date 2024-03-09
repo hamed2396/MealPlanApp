@@ -35,4 +35,7 @@
     <color name="grayAlpha">#B3737980</color>
     <color name="ming">#40737980</color>
     <color name="whiteAlpha">#4DE8EAF6</color>
+    <color name="bananaYellow">#FDD835</color>
+    <color name="venetianRed">#CC1512</color>
+    <color name="violet">#9C27B0</color>
 </resources>

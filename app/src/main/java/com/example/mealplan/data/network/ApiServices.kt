@@ -2,9 +2,11 @@ package com.example.mealplan.data.network
 
 
 import ResponseRestaurant
+import com.example.mealplan.data.models.ResponseWeeklyMeals
 import com.example.mealplan.data.models.detail.ResponseDetailInfo
 import com.example.mealplan.data.models.detail.ResponseDetailVideo
 import com.example.mealplan.data.models.detail.ResponseNutrition
+import com.example.mealplan.data.models.detail.ResponseSimilar
 import com.example.mealplan.data.models.meal.ResponseRandomMeal
 import com.example.mealplan.data.models.signup.BodySignUp
 import com.example.mealplan.data.models.signup.ResponseSignUp
@@ -12,8 +14,6 @@ import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -49,4 +49,13 @@ interface ApiServices {
     suspend fun getMealNutritionChart(
         @Path("id") id: Int
     ): Response<ResponseBody>
+
+    @GET("mealplanner/generate")
+    suspend fun getWeeklyMeal(
+        @Query("timeFrame") time: String = "week"
+    ): Response<ResponseWeeklyMeals>
+    @GET("recipes/{id}/similar")
+    suspend fun getSimilarRecipes(
+        @Path("id") id: Int,
+    ): Response<ResponseSimilar>
 }

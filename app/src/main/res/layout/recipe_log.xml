@@ -27,12 +27,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/_8mdp"
-        android:background="@drawable/bg_action_detail"
         android:padding="5dp"
-        android:src="@drawable/plan"
+        android:src="@drawable/baseline_add_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/txtTitle"
-        app:tint="@color/black" />
+         />
 
     <TextView
         android:id="@+id/txtPriceTitle"
@@ -197,6 +196,39 @@
         app:layout_constraintStart_toStartOf="@id/txtReadMoreDesc"
         app:layout_constraintTop_toBottomOf="@+id/stepTitle"
         tools:ignore="RtlSymmetry" />
+    <com.todkars.shimmer.ShimmerRecyclerView
+        android:id="@+id/similarList"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/_10mdp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/similarTitle"
+        app:shimmer_recycler_auto_start="true"
+        app:shimmer_recycler_item_count="1"
+        app:shimmer_recycler_layout="@layout/item_similar_shimmer"
+        app:shimmer_recycler_shape="linear"
+        android:layout_marginTop="@dimen/_8mdp"
+        android:layout_marginEnd="@dimen/_10mdp"
+        android:layout_marginHorizontal="@dimen/_8mdp"
+        tools:ignore="RtlSymmetry" />
+    <TextView
+        android:id="@+id/similarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10mdp"
+        android:drawablePadding="@dimen/_5mdp"
+        android:gravity="center_vertical"
+        android:layout_margin="@dimen/_8mdp"
+        android:text="@string/similar_recipe"
+        android:textColor="@color/limedSpruce"
+        android:textSize="@dimen/_14font_mdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stepsList" />
+    <!-- List -->
 
     <TextView
         android:id="@+id/stepsShowMore"
@@ -220,7 +252,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"
-        app:constraint_referenced_ids="txtLikes,txtHealthScore,txtLikeTitle,txtHealthScoreTitle,txtPrice,txtPriceTitle,imgPlan,txtTitle,descTitle,txtReadMoreDesc,stepTitle,stepsList" />
+        app:constraint_referenced_ids="txtLikes,similarTitle,,similarList,txtHealthScore,txtLikeTitle,txtHealthScoreTitle,txtPrice,txtPriceTitle,imgPlan,txtTitle,descTitle,txtReadMoreDesc,stepTitle,stepsList" />
 
 
 

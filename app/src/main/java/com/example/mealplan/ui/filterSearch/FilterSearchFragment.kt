@@ -1,5 +1,6 @@
 package com.example.mealplan.ui.filterSearch
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
@@ -12,10 +13,13 @@ import com.example.mealplan.utils.Constants
 import com.example.mealplan.utils.Constants.hasClearedFilters
 import com.example.mealplan.utils.FilterViewPager
 import com.example.mealplan.utils.FullHeightBottomSheet
+import com.example.mealplan.utils.base.BaseBottomSheetDialogFragment
 import com.example.mealplan.utils.events.Event
 import com.example.mealplan.utils.events.EventBus
 import com.example.mealplan.utils.extensions.launchLifeCycleScope
 import com.example.mealplan.viewmodel.FilterSearchViewModel
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CompletableDeferred
@@ -34,7 +38,6 @@ class FilterSearchFragment :
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             imgBack.setOnClickListener { dismiss() }
-
         }
         setUpViewPager()
         sendFiltersToSearchFragment()
@@ -164,6 +167,9 @@ class FilterSearchFragment :
             }
             dismiss()
         }
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
     }
 
 }

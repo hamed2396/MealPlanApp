@@ -1,4 +1,4 @@
-package com.example.mealplan.adapters.detail
+package com.example.mealplan.data.models.detail
 
 
 import com.google.gson.annotations.SerializedName

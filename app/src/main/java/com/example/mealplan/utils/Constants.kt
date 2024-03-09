@@ -1,6 +1,7 @@
 package com.example.mealplan.utils
 
 import androidx.lifecycle.MutableLiveData
+import java.util.UUID
 
 object Constants {
     //network
@@ -16,6 +17,14 @@ object Constants {
     const val SERVER_ERROR = "Something Went Down in our End"
     const val BASE_URL_IMAGES = "https://spoonacular.com/cdn/ingredients_"
     const val SIZE_IMAGES = "100x100/"
+    const val BASE_URL_RECIPE_IMAGES = "https://spoonacular.com/recipeImages/"
+    const val RECIPE_SIZE_IMAGES = "312x231"
+
+
+    //dataBase
+    const val DAILY_MEAL_TABLE = "DailyMeal"
+    const val WEEKLY_MEAL_TABLE = "WeeklyMeal"
+    const val DB_NAME = "mealDataBase"
 
 
     //other
@@ -26,6 +35,8 @@ object Constants {
     const val PROTEIN = "Protein"
     const val BREAD = "Bread"
     const val BREAKFAST = "Breakfast"
+    const val LUNCH = "Lunch"
+    const val DINNER = "Dinner"
     const val SOUP = "Soup"
     const val DRINK = "Drink"
     const val SNACK = "Snack"
@@ -60,6 +71,10 @@ object Constants {
     var VitaminB1_INDEX: Int? = 0
     var STEPS_COUNT = 0
     var STEPS_COUNT_STEP_FRAGMENT: Int? = null
+     var WORKER_ID :UUID?=null
+    const val Insert_DB="Couldn't Insert Items"
+    const val MAX_CAL_PER_DAY=2000f
+    var startWorker=MutableLiveData(false)
 
 
 }
