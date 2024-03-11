@@ -415,7 +415,6 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
                             binding.layoutExpandableNutrition.stepsShowMore.gone()
                         }
                     }
-                    //  if (args.steps as ResponseRandomMeal.Result.AnalyzedInstruction == null)
 
 
                 }
@@ -943,7 +942,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
     override fun onDestroyView() {
         binding.apply {
             youtubePlayer.release()
-            scrollView.viewTreeObserver.removeOnScrollChangedListener(onScrollChangedListener)
+          scrollView.viewTreeObserver.removeOnScrollChangedListener(onScrollChangedListener)
         }
         super.onDestroyView()
     }

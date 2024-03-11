@@ -5,6 +5,7 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
+
 @Parcelize
 data class ResponseRandomMeal(
     @SerializedName("number")
@@ -16,11 +17,12 @@ data class ResponseRandomMeal(
     @SerializedName("totalResults")
     val totalResults: Int? // 5218
 ) : Parcelable {
-    @Parcelize data class Result(
+    @Parcelize
+    data class Result(
         @SerializedName("aggregateLikes")
         val aggregateLikes: Int?, // 309
         @SerializedName("analyzedInstructions")
-        val analyzedInstructions: List<AnalyzedInstruction?>?,
+        val analyzedInstructions: @RawValue List<AnalyzedInstruction?>?,
         @SerializedName("cheap")
         val cheap: Boolean?, // false
         @SerializedName("cookingMinutes")
@@ -28,13 +30,13 @@ data class ResponseRandomMeal(
         @SerializedName("creditsText")
         val creditsText: String?, // blogspot.com
         @SerializedName("cuisines")
-        val cuisines: List<String?>?,
+        val cuisines: @RawValue List<String?>?,
         @SerializedName("dairyFree")
         val dairyFree: Boolean?, // true
         @SerializedName("diets")
-        val diets: List<String?>?,
+        val diets: @RawValue List<String?>?,
         @SerializedName("dishTypes")
-        val dishTypes: List<String?>?,
+        val dishTypes: @RawValue List<String?>?,
         @SerializedName("gaps")
         val gaps: String?, // no
         @SerializedName("glutenFree")
@@ -54,7 +56,7 @@ data class ResponseRandomMeal(
         @SerializedName("nutrition")
         val nutrition: @RawValue Nutrition?,
         @SerializedName("occasions")
-        val occasions: List<String?>?,
+        val occasions: @RawValue List<String?>?,
         @SerializedName("preparationMinutes")
         val preparationMinutes: Int?, // -1
         @SerializedName("pricePerServing")
@@ -88,25 +90,28 @@ data class ResponseRandomMeal(
         @SerializedName("weightWatcherSmartPoints")
         val weightWatcherSmartPoints: Int? // 12
     ) : Parcelable {
+
         @Parcelize
         data class AnalyzedInstruction(
             @SerializedName("name")
             val name: String?,
             @SerializedName("steps")
             val steps: @RawValue List<Step>?
-        ): Parcelable {
-          data class Step(
+        ) : Parcelable {
+            @Parcelize
+            data class Step(
                 @SerializedName("equipment")
-                val equipment:  List<Equipment?>?,
+                val equipment: @RawValue List<Equipment?>?,
                 @SerializedName("ingredients")
-                val ingredients:   List<Ingredient?>?,
+                val ingredients: @RawValue List<Ingredient?>?,
                 @SerializedName("length")
-                val length:  Length?,
+                val length: @RawValue Length?,
                 @SerializedName("number")
                 val number: Int?, // 1
                 @SerializedName("step")
                 val step: String? // Rinse the cannellini beans and soak for 8 hours or overnight in several inches of water.
-            )  {
+            ) : Parcelable {
+                @Parcelize
                 data class Equipment(
                     @SerializedName("id")
                     val id: Int?, // 404669
@@ -116,8 +121,9 @@ data class ResponseRandomMeal(
                     val localizedName: String?, // sauce pan
                     @SerializedName("name")
                     val name: String? // sauce pan
-                )
+                ) : Parcelable
 
+                @Parcelize
                 data class Ingredient(
                     @SerializedName("id")
                     val id: Int?, // 10716050
@@ -127,20 +133,22 @@ data class ResponseRandomMeal(
                     val localizedName: String?, // cannellini beans
                     @SerializedName("name")
                     val name: String? // cannellini beans
-                )
+                ) : Parcelable
 
+                @Parcelize
                 data class Length(
                     @SerializedName("number")
                     val number: Int?, // 480
                     @SerializedName("unit")
                     val unit: String? // minutes
-                )
+                ) : Parcelable
             }
         }
 
+        @Parcelize
         data class Nutrition(
             @SerializedName("caloricBreakdown")
-            val caloricBreakdown: CaloricBreakdown?,
+            val caloricBreakdown: @RawValue CaloricBreakdown?,
             @SerializedName("flavonoids")
             val flavonoids: List<Flavonoid?>?,
             @SerializedName("ingredients")
@@ -151,7 +159,7 @@ data class ResponseRandomMeal(
             val properties: List<Property?>?,
             @SerializedName("weightPerServing")
             val weightPerServing: WeightPerServing?
-        ) {
+        ) : Parcelable {
             data class CaloricBreakdown(
                 @SerializedName("percentCarbs")
                 val percentCarbs: Double?, // 63.39
@@ -161,6 +169,7 @@ data class ResponseRandomMeal(
                 val percentProtein: Double? // 25.2
             )
 
+            @Parcelize
             data class Flavonoid(
                 @SerializedName("amount")
                 val amount: Double?, // 0.0
@@ -168,8 +177,9 @@ data class ResponseRandomMeal(
                 val name: String?, // Cyanidin
                 @SerializedName("unit")
                 val unit: String?
-            )
+            ) : Parcelable
 
+            @Parcelize
             data class Ingredient(
                 @SerializedName("amount")
                 val amount: Double?, // 0.63
@@ -181,7 +191,8 @@ data class ResponseRandomMeal(
                 val nutrients: List<Nutrient?>?,
                 @SerializedName("unit")
                 val unit: String? // cups
-            ) {
+            ) : Parcelable {
+                @Parcelize
                 data class Nutrient(
                     @SerializedName("amount")
                     val amount: Double?, // 489.85
@@ -191,9 +202,10 @@ data class ResponseRandomMeal(
                     val percentOfDailyNeeds: Double?, // 137.1
                     @SerializedName("unit")
                     val unit: String? // µg
-                )
+                ) : Parcelable
             }
 
+            @Parcelize
             data class Nutrient(
                 @SerializedName("amount")
                 val amount: Double?, // 488.93
@@ -203,8 +215,9 @@ data class ResponseRandomMeal(
                 val percentOfDailyNeeds: Double?, // 24.45
                 @SerializedName("unit")
                 val unit: String? // kcal
-            )
+            ) : Parcelable
 
+            @Parcelize
             data class Property(
                 @SerializedName("amount")
                 val amount: Double?, // 38.0
@@ -212,14 +225,15 @@ data class ResponseRandomMeal(
                 val name: String?, // Glycemic Index
                 @SerializedName("unit")
                 val unit: String?
-            )
+            ) : Parcelable
 
+            @Parcelize
             data class WeightPerServing(
                 @SerializedName("amount")
                 val amount: Int?, // 227
                 @SerializedName("unit")
                 val unit: String? // g
-            )
+            ) : Parcelable
         }
     }
 }

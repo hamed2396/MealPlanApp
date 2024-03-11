@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
 
 
                     else -> {
-                        bottomNav.gone()
+                        bottomNav.visible()
                     }
                 }
             }
@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
                 EventBus.subscribe<Event.CancelWorker>(this) {
                     if (it.list.isNullOrEmpty()) {
                         Constants.WORKER_ID?.let { id ->
-                            "cancelled".logError()
+
                             WorkManager.getInstance(this@MainActivity).cancelWorkById(id)
                         }
                     }
