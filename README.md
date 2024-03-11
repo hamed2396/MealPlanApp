@@ -28,12 +28,8 @@ Integrate Retrofit library to fetch recipe data from external APIs, enabling dyn
 ## Features Implemented:
 
 * Create Daily and Weekly Meal Plans:
-* 
 ![add](https://github.com/hamed2396/MealPlanApp/assets/86206868/0e71e883-76c1-4302-a817-454bf56d86ed)  ![daily](https://github.com/hamed2396/MealPlanApp/assets/86206868/a1fa8633-fad0-447d-bbce-83632ef4a9d8)  ![week](https://github.com/hamed2396/MealPlanApp/assets/86206868/55d8d693-690f-4dd5-a704-18f8bb4225ed)
 
+Create Daily and Weekly Meal Plans: Allow users to create and customize their meal plans for both daily and weekly durations, providing flexibility and convenience in meal preparation
 
-
-
-Allow users to create and customize their meal plans for both daily and weekly durations, providing flexibility and convenience in meal preparation.
-Recipe Chart Integration: Implement a user-friendly interface to browse and search through a diverse collection of recipes, complete with detailed nutritional information and cooking instructions.
-Seamless Navigation: Design an intuitive navigation flow that allows users to seamlessly switch between different screens and functionalities within the app, enhancing overall user experience.
+* Recipe Chart Integration: ![screenshot-2024-03-11_15 46 55 715](https://github.com/hamed2396/MealPlanApp/assets/86206868/75920915-154a-4789-8652-047de625225a)
