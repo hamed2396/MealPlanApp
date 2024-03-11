@@ -66,4 +66,3 @@ https://github.com/hamed2396/MealPlanApp/assets/86206868/87d49a0b-f910-42ce-ae10
 
 https://github.com/hamed2396/MealPlanApp/assets/86206868/fd7a4bcd-6f32-42f1-903d-064bce41c465
 
-*Mastering Meal Planning: Advanced Search
