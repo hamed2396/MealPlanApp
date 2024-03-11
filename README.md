@@ -37,7 +37,7 @@ Integrate Retrofit library to fetch recipe data from external APIs, enabling dyn
 * Recipe Chart Integration:
  ![screenshot-2024-03-11_15 46 55 715](https://github.com/hamed2396/MealPlanApp/assets/86206868/75920915-154a-4789-8652-047de625225a)
 
-*YouTube Video:
+* YouTube Video:
 
 
 Building a Meal Planning App: Recipe Chart Integration Tutorial"
@@ -50,7 +50,8 @@ https://github.com/hamed2396/MealPlanApp/assets/86206868/f323517e-dd37-4ce8-a7b0
 
 
 
-*Mastering Meal Planning: Advanced Search 
+* Mastering Meal Planning: Advanced Search
+  
 Unlock the full potential of your meal planning app with advanced search functionality. Learn how to implement powerful search algorithms and techniques to help users find the perfect recipes quickly and effortlessly. Elevate your app to the next level and revolutionize the meal planning experience for your users
 
 
@@ -61,7 +62,7 @@ https://github.com/hamed2396/MealPlanApp/assets/86206868/87d49a0b-f910-42ce-ae10
 
 
 
-*viewPager with dot indicator
+* viewPager with dot indicator
 
 
 https://github.com/hamed2396/MealPlanApp/assets/86206868/fd7a4bcd-6f32-42f1-903d-064bce41c465
