@@ -34,7 +34,6 @@ Integrate Retrofit library to fetch recipe data from external APIs, enabling dyn
 
 
 
-* Recipe Chart Integration:
  ![screenshot-2024-03-11_15 46 55 715](https://github.com/hamed2396/MealPlanApp/assets/86206868/75920915-154a-4789-8652-047de625225a)
 
 * YouTube Video:
